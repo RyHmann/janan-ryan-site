@@ -1,5 +1,6 @@
 export const navLinks = [
 	{ href: '/', label: 'Home' },
+	{ href: '/rsvp', label: 'RSVP' },
 	{ href: '/before-you-travel', label: 'Before You Travel' },
 	{ href: '/arriving-in-new-zealand', label: 'Arriving in New Zealand' },
 	{ href: '/wellington-guide', label: 'Wellington Guide' },

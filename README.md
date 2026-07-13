@@ -19,6 +19,47 @@ fnm use
 npm run build
 ```
 
+Type-check Astro and React files:
+
+```sh
+npm run check
+```
+
+## RSVP Development Setup
+
+The RSVP routes require a Supabase project and server-side environment variables. Existing guide
+pages still build as static HTML.
+
+1. Create a Supabase project in the Sydney region.
+1. In Supabase's SQL Editor, run
+   `supabase/migrations/20260713000000_create_rsvp_schema.sql`.
+1. Copy `.env.example` to `.env` and fill in the Supabase URL, service-role key, and a random RSVP
+   session secret of at least 32 characters.
+1. Start the site with `npm run dev`.
+
+Never expose `SUPABASE_SERVICE_ROLE_KEY` through a `PUBLIC_` environment variable.
+
+### Create a Test Invitation
+
+Generate a raw invitation token and its database-safe hash:
+
+```sh
+npm run rsvp:token
+```
+
+Create a household and guests in Supabase Studio, then create an `invitation_tokens` row using the
+generated `tokenHash`. Keep the raw `token` for the access URL:
+
+```text
+http://localhost:4321/rsvp/access?token=RAW_TOKEN
+```
+
+The raw token cannot be recovered from the database. Generate a new token and replace the active
+token row if it is lost. Disable YAMM click tracking when sending personalized access URLs.
+
+The production site currently builds with Astro's standalone Node adapter. The adapter should be
+changed to match the final hosting provider before deployment.
+
 ## Discount Codes (Not In Repo)
 
 Accommodation discount codes are rendered from environment variables so they are not committed to GitHub.

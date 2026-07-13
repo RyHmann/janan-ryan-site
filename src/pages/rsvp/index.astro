@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import RsvpApp from '../../features/rsvp/RsvpApp';
+import { navLinks } from '../../data/site';
+
+export const prerender = false;
+
+const access = Astro.url.searchParams.get('access');
+const accessError = access === 'invalid' || access === 'unavailable' ? access : undefined;
+---
+
+<Layout
+	title="RSVP | Janan & Ryan"
+	description="Respond to Janan and Ryan's wedding invitation."
+	navLinks={navLinks}
+>
+	<RsvpApp client:load accessError={accessError} />
+</Layout>

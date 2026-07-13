@@ -1,0 +1,266 @@
+.rsvp-shell {
+	max-width: 920px;
+	margin: 0 auto;
+	padding: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.rsvp-header {
+	display: grid;
+	gap: 0.65rem;
+	margin-bottom: 1.75rem;
+}
+
+.rsvp-header h1,
+.rsvp-header p,
+.rsvp-state h1,
+.rsvp-state p {
+	margin: 0;
+}
+
+.rsvp-header h1,
+.rsvp-state h1 {
+	font-size: clamp(2.2rem, 6vw, 4.5rem);
+	line-height: 1;
+}
+
+.rsvp-header > p:last-child,
+.rsvp-state p {
+	color: var(--text-muted);
+	line-height: 1.65;
+}
+
+.rsvp-eyebrow {
+	margin: 0;
+	color: var(--action-primary);
+	font-size: 0.8rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.rsvp-state {
+	display: grid;
+	gap: 1rem;
+}
+
+.rsvp-success,
+.rsvp-error {
+	margin-bottom: 1.25rem;
+	padding: 1rem 1.1rem;
+	border-radius: 16px;
+}
+
+.rsvp-success {
+	display: grid;
+	gap: 0.25rem;
+	border: 1px solid var(--color-green-900-alpha-24);
+	background: var(--color-ivory-000);
+}
+
+.rsvp-success span {
+	color: var(--text-muted);
+}
+
+.rsvp-error {
+	border: 1px solid var(--interactive-border-hover);
+	background: var(--action-primary-soft);
+	color: var(--action-secondary);
+	line-height: 1.5;
+}
+
+.rsvp-guest-list {
+	display: grid;
+	gap: 1.25rem;
+}
+
+.rsvp-guest {
+	display: grid;
+	gap: 1.25rem;
+	padding: clamp(1rem, 3vw, 1.5rem);
+	border: 1px solid var(--border-content);
+	border-radius: 22px;
+	background: var(--bg-card);
+}
+
+.rsvp-guest-heading {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 1rem;
+	padding-bottom: 0.85rem;
+	border-bottom: 1px solid var(--border-subtle);
+}
+
+.rsvp-guest-heading h2 {
+	margin: 0;
+	font-size: 1.35rem;
+}
+
+.rsvp-guest-heading span {
+	color: var(--action-secondary);
+	font-size: 0.82rem;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: capitalize;
+}
+
+.rsvp-event-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.rsvp-attendance,
+.rsvp-dietary {
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.rsvp-attendance legend,
+.rsvp-dietary legend,
+.rsvp-comments > span,
+.rsvp-other > span {
+	margin-bottom: 0.7rem;
+	font-weight: 700;
+}
+
+.rsvp-choice-row,
+.rsvp-checkbox-grid {
+	display: grid;
+	gap: 0.6rem;
+}
+
+.rsvp-choice-row label,
+.rsvp-checkbox-grid label {
+	display: flex;
+	align-items: center;
+	gap: 0.65rem;
+	padding: 0.75rem;
+	border: 1px solid var(--border-subtle);
+	border-radius: 12px;
+	background: var(--nav-pill-bg);
+	cursor: pointer;
+}
+
+.rsvp-choice-row label:has(input:checked),
+.rsvp-checkbox-grid label:has(input:checked) {
+	border-color: var(--interactive-border-hover);
+	background: var(--action-primary-soft);
+}
+
+.rsvp-choice-row input,
+.rsvp-checkbox-grid input {
+	width: 1.1rem;
+	height: 1.1rem;
+	margin: 0;
+	accent-color: var(--action-primary);
+}
+
+.rsvp-dietary {
+	padding-top: 0.25rem;
+}
+
+.rsvp-dietary > p {
+	margin: -0.35rem 0 0.85rem;
+	color: var(--text-muted);
+	font-size: 0.92rem;
+}
+
+.rsvp-checkbox-grid {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.rsvp-other,
+.rsvp-comments {
+	display: grid;
+	margin-top: 1rem;
+}
+
+.rsvp-other input,
+.rsvp-comments textarea {
+	width: 100%;
+	border: 1px solid var(--border-content);
+	border-radius: 12px;
+	background: var(--color-ivory-000);
+	color: var(--text-primary);
+	font: inherit;
+}
+
+.rsvp-other input {
+	padding: 0.8rem;
+}
+
+.rsvp-comments {
+	margin-top: 1.5rem;
+}
+
+.rsvp-comments textarea {
+	padding: 0.9rem;
+	line-height: 1.5;
+	resize: vertical;
+}
+
+.rsvp-comments small {
+	justify-self: end;
+	margin-top: 0.35rem;
+	color: var(--text-muted);
+}
+
+.rsvp-other input:focus-visible,
+.rsvp-comments textarea:focus-visible,
+.rsvp-choice-row input:focus-visible,
+.rsvp-checkbox-grid input:focus-visible {
+	outline: 3px solid var(--focus-ring);
+	outline-offset: 2px;
+}
+
+.rsvp-actions {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 1.25rem;
+}
+
+.rsvp-actions button {
+	min-width: 150px;
+	padding: 0.85rem 1.25rem;
+	border: 0;
+	border-radius: 999px;
+	background: var(--action-primary);
+	color: var(--text-on-accent);
+	font: inherit;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.rsvp-actions button:hover:not(:disabled) {
+	background: var(--action-secondary);
+}
+
+.rsvp-actions button:focus-visible {
+	outline: 3px solid var(--focus-ring);
+	outline-offset: 3px;
+}
+
+.rsvp-actions button:disabled {
+	cursor: wait;
+	opacity: 0.65;
+}
+
+@media (max-width: 680px) {
+	.rsvp-event-grid,
+	.rsvp-checkbox-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.rsvp-guest-heading {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 0.4rem;
+	}
+
+	.rsvp-actions button {
+		width: 100%;
+	}
+}

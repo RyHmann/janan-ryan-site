@@ -1,131 +1,103 @@
-# RSVP Bookkeeping Plan (Supabase + Magic Link)
+# RSVP Implementation Plan
 
-## Goal
-Create a lightweight reservation/RSVP bookkeeping system for wedding guests without running a full custom backend server.
+## Current Scope
 
-## Why This Approach
-- Keeps hosting/ops simple.
-- Uses secure, proven auth flow (magic links).
-- Supports guest self-service with low friction.
-- Allows admin reporting and tracking.
+The first release manages one wedding invitation with two portions: ceremony and reception.
+It intentionally does not include a generalized events system, a custom admin dashboard, or
+automated email delivery.
 
-## Recommended Stack
-- Astro site (existing frontend)
-- Supabase Postgres (data storage)
-- Supabase Auth (magic-link sign-in)
-- Supabase Row Level Security (RLS)
-- Optional Supabase Edge Functions (admin-only or bulk actions)
+Guests receive a personalized access link through YAMM. The link grants access to one household,
+which may contain any number of named guests. Guests never create a password or visible account.
 
-## Core User Flow
-1. Host imports/maintains guest list with email addresses.
-2. Host sends RSVP access email with one-click secure link.
-3. Guest opens link, gets authenticated session, and lands on RSVP page.
-4. Guest views and updates their RSVP details.
-5. Admin views aggregate totals and exports data.
+## Stack
 
-## Email Strategy (Given Current Context)
-We already sent guest emails via personal Gmail using YAMM.
+- Astro for routing, server endpoints, and the existing static guide
+- React for the interactive RSVP form
+- Supabase Postgres for RSVP data
+- Supabase Studio as the initial administration interface
+- YAMM/Gmail for invitation and reminder emails
 
-Use that to our advantage:
-- Send RSVP emails from the same sender/account for continuity.
-- Keep subject and copy consistent with prior communication.
-- Use clear wedding context in every message (names/date/location).
-- Send in manageable batches to avoid throttling.
+The project currently uses Astro's Node adapter as a portable build default. Replace it with the
+adapter for the final hosting platform before deployment.
 
-## Deliverability Notes
-Potential issues can still occur, but risk is manageable:
-- Gmail/YAMM daily limits still apply.
-- Large bursts can trigger temporary throttling.
-- Some guest inbox providers may still filter links.
+## Guest Flow
 
-Mitigations:
-- Send in smaller batches.
-- Avoid spammy phrasing.
-- Include clear fallback: "Need a fresh link?"
-- Track bounces/non-responders.
+1. Generate a cryptographically random token for a household.
+2. Store only its SHA-256 hash in `invitation_tokens`.
+3. Merge the raw token into a personalized YAMM link.
+4. `/rsvp/access?token=...` validates the token and immediately redirects to `/rsvp`.
+5. A signed, `HttpOnly`, `SameSite=Lax` cookie identifies the household on later requests.
+6. The guest responds separately for every applicable ceremony/reception invitation.
+7. The server validates household ownership and saves the complete response in one transaction.
 
-## Data Model (MVP)
-### profiles
-- id (uuid, maps to auth user id)
-- email
-- full_name
-- is_admin (boolean)
+YAMM click tracking should remain disabled for emails containing RSVP access links.
 
-### guests
-- id
-- name
-- email (unique)
-- can_bring_plus_one (boolean)
-- dietary_notes
+## Data Model
 
-### rsvps
-- id
-- guest_id
-- event_code (e.g., welcome_dinner, wedding_day)
-- status (attending, declined, pending)
-- party_size
-- notes
-- updated_at
+### `households`
 
-Optional later:
-- households table for families/plus-ones
-- invites table for invite lifecycle tracking
+- `id`
+- `display_name`
+- `primary_email`
+- `additional_comments` (maximum 2,000 characters)
+- timestamps
 
-## Security Model
-Use RLS on all data tables.
+### `guests`
 
-Baseline policies:
-- Authenticated users can only read/update records tied to their own identity/email.
-- Admin users can read/update all records.
-- Anonymous users cannot write RSVP data.
+- `id`
+- `household_id`
+- `full_name`
+- `rsvp_for`: `ceremony`, `reception`, or `both`
+- `display_order`
 
-Hardening option:
-- After magic-link login, request one extra check (e.g., last name or invite code) before showing full details.
+### `rsvps`
 
-## "No Full Backend" Clarification
-This plan avoids a custom always-on backend.
+- `guest_id`
+- `ceremony_status`: `pending`, `attending`, `declined`, or not applicable
+- `reception_status`: `pending`, `attending`, `declined`, or not applicable
+- `dietary_requirements`: any of `gluten_free`, `vegan`, `vegetarian`, `other`
+- `dietary_other`
+- `updated_at`
 
-You may still add tiny serverless functions for:
-- Bulk link generation/sending
-- Admin CSV export
-- Seat cap validation and conflict-safe writes
+Dietary fields apply only to reception attendees. Selecting `other` requires a description.
 
-## Implementation Phases
-## Phase 1: Foundation
-- Create Supabase project.
-- Define schema and constraints.
-- Enable and test RLS policies.
-- Add environment variables to Astro project.
+### `invitation_tokens`
 
-## Phase 2: Auth + Guest RSVP
-- Build magic-link login flow.
-- Build RSVP read/update form.
-- Add success/error states and guardrails.
+- `household_id`
+- `token_hash`
+- `expires_at`
+- `revoked_at`
+- `last_used_at`
+- `created_at`
 
-## Phase 3: Admin + Operations
-- Add admin summary page (counts/statuses by event).
-- Add CSV export.
-- Add resend/fallback link workflow for guests.
+## Security Boundaries
 
-## Phase 4: Reliability
-- Add logging/audit for admin changes.
-- Add reminder cadence for non-responders.
-- Add basic validation for party size and required fields.
+- Supabase's service-role credential is server-only and is never exposed to React.
+- Row Level Security is enabled, and anonymous/authenticated database roles receive no table access.
+- The server derives household identity only from the signed cookie, never from submitted JSON.
+- The database RPC verifies that a submission contains exactly the guests in that household.
+- Invitation tokens can be revoked and replaced.
+- The RSVP POST endpoint rejects cross-origin browser requests.
 
-## Decisions Captured
-- Keep the guide page/content work as-is.
-- Use Supabase-first architecture.
-- Prefer host-initiated magic-link email flow.
-- Leverage existing Gmail/YAMM sender trust and list.
+## Implementation Status
 
-## Open Questions for Later
-- Do we need household-level RSVP editing or individual-only?
-- Is plus-one always fixed per guest, or guest-selectable?
-- Which events need RSVP tracking (single event vs multi-event)?
-- Do we want automatic reminders from the system or manual YAMM sends?
+- [x] Database migration and constraints
+- [x] Invitation-token validation
+- [x] Signed household session cookie
+- [x] Household RSVP read/write API
+- [x] React form for ceremony, reception, dietary requirements, and additional comments
+- [x] Responsive styling using the existing site theme
+- [ ] Create Supabase project and apply migration
+- [ ] Import cleaned household/guest data
+- [ ] Select and configure the production Astro hosting adapter
+- [ ] Test personalized links through YAMM with click tracking disabled
+- [ ] Build a custom admin dashboard if Supabase Studio proves insufficient
 
-## Next Session Starting Checklist
-- Confirm final RSVP fields and events.
-- Finalize schema + RLS SQL.
-- Decide email generation/sending path (Supabase email vs YAMM merge flow).
-- Implement MVP UI flow in Astro.
+## Deferred Work
+
+- Multiple generalized events
+- Additional dietary categories
+- Configurable RSVP questions
+- Automated reminders
+- Custom admin dashboard and admin authentication
+- Gift registry

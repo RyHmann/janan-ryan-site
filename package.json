@@ -9,10 +9,21 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "check": "astro check",
+    "rsvp:token": "node scripts/generate-rsvp-token.mjs",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/mdx": "^6.0.1",
-    "astro": "^6.3.5"
+    "@astrojs/node": "^10.1.4",
+    "@astrojs/react": "^5.0.7",
+    "@supabase/supabase-js": "^2.110.2",
+    "astro": "^6.4.8",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "typescript": "^6.0.3"
   }
 }
