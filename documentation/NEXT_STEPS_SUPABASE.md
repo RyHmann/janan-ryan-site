@@ -175,9 +175,9 @@ with new_household as (
   returning id
 ), new_guests as (
   insert into public.guests (household_id, full_name, rsvp_for, display_order)
-  select id, 'First Test Guest', 'both', 1 from new_household
+  select id, 'First Test Guest', 'both'::public.rsvp_scope, 1 from new_household
   union all
-  select id, 'Second Test Guest', 'reception', 2 from new_household
+  select id, 'Second Test Guest', 'reception'::public.rsvp_scope, 2 from new_household
 )
 insert into public.invitation_tokens (household_id, token_hash, expires_at)
 select id, 'PASTE_TOKEN_HASH_HERE', now() + interval '180 days'
@@ -243,12 +243,12 @@ To issue a replacement:
 
 After the end-to-end test succeeds:
 
-- [ ] Mark the hosted-project, migration, environment, and round-trip items complete at the top of
+- [x] Mark the hosted-project, migration, environment, and round-trip items complete at the top of
   this document.
-- [ ] Record which Supabase project is used. The project reference itself is not a secret and may be
+- [x] Record which Supabase project is used. The project reference itself is not a secret and may be
   stored by the Supabase CLI; the database password and API secret must remain private.
-- [ ] Commit the Supabase CLI dependency, `supabase/config.toml`, migration, and documentation.
-- [ ] Do not commit `.env`, database passwords, API secrets, or raw invitation tokens.
+- [x] Commit the Supabase CLI dependency, `supabase/config.toml`, migration, and documentation.
+- [x] Do not commit `.env`, database passwords, API secrets, or raw invitation tokens.
 
 ## 12. Prepare for real invitations
 
