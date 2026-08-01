@@ -1,0 +1,6 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AdminCallback from '../../features/admin/AdminCallback';
+export const prerender = false;
+---
+<Layout title="Signing in | RSVP administration" navLinks={[]}><AdminCallback client:load /></Layout>

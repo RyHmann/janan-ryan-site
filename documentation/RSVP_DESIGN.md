@@ -1,12 +1,12 @@
 # RSVP System Design
 
-Last updated: 13 July 2026
+Last updated: 1 August 2026
 
 ## Status
 
-The first application implementation is in the repository. It type-checks, builds, and has passed
-route-level smoke tests without a live database. The Supabase project, real migration run, database
-round-trip test, guest import, and production deployment remain outstanding.
+The public RSVP application is deployed on Vercel and connected to a hosted Supabase project. An
+invalid-token request has been verified in production. A valid invitation exchange, RSVP
+submission/reload, and link-revocation test remain outstanding.
 
 The operational checklist is maintained separately in
 [NEXT_STEPS_SUPABASE.md](./NEXT_STEPS_SUPABASE.md).
@@ -20,7 +20,8 @@ The operational checklist is maintained separately in
 - Collect one optional `Additional Comments` field per household.
 - Let a household revisit and update its response until its invitation expires or is revoked.
 - Keep the existing content-oriented Astro site and use React for the interactive RSVP experience.
-- Use Supabase Studio as the initial administrative interface.
+- Use Supabase Studio as the initial administrative interface, then add a focused private dashboard
+  when it removes real operational friction.
 
 ## Non-goals for the first release
 
@@ -28,7 +29,7 @@ The operational checklist is maintained separately in
 - Guest-created accounts or passwords
 - Supabase Auth for guests
 - Automated invitation or reminder email delivery
-- A custom admin dashboard
+- A generalized, multi-role administration platform
 - Unnamed or guest-selected plus-ones
 - Configurable form questions
 - Gift-registry functionality
@@ -73,6 +74,40 @@ and `anon` and `authenticated` receive no table access.
 The first release does not include `/admin`. Supabase Studio is sufficient to inspect responses,
 correct data, revoke links, and export results while actual administrative requirements become clear.
 
+### The future admin dashboard stays in this Astro application
+
+The private admin experience will be a React application mounted at `/admin`, backed by protected
+Astro endpoints at `/api/admin/*`. It is not a separate React deployment. This keeps deployment,
+cookies, routing, and server-only database access in one place while letting the dashboard use React
+for all interactive UI.
+
+The first admin release should cover only the workflow needed to operate invitations safely:
+
+- sign in and out;
+- search and view households, guests, invitations, and RSVP state;
+- create a household and its named guests;
+- generate or revoke an invitation; and
+- display/copy a newly generated raw invitation URL once, plus export CSV data.
+
+Editing RSVP responses can follow after the above flow is proven. TanStack Query is the preferred
+client-side data-fetching/mutation layer; Redux is not required unless substantially more shared
+browser-only state emerges.
+
+### Admin authentication uses Supabase Auth, not guest links or Auth0
+
+Admin users authenticate with Supabase Auth email magic links. The dashboard must use a distinct
+Supabase Auth session cookie; it must never reuse the guest `rsvp_session` bearer-link session.
+
+Authorization is independent of authentication. Every `/admin` route and `/api/admin/*` endpoint
+must both validate the Supabase Auth user and verify that user against an application-owned
+`admin_users` allow-list. The allow-list begins with the couple's email addresses and is managed by
+a migration, not by client code. Magic-link sign-in must not create arbitrary users; only provisioned
+users can request a link.
+
+The browser may receive Supabase's publishable key for the admin authentication/session flow. It
+must never receive `SUPABASE_SERVICE_ROLE_KEY` or any other secret key. Protected Astro endpoints
+perform privileged RSVP reads and writes only after authorization succeeds.
+
 ## System overview
 
 ```text
@@ -97,7 +132,8 @@ Supabase Postgres
 ```
 
 The existing guide pages remain prerendered static HTML. The RSVP page and endpoints opt into
-on-demand rendering.
+on-demand rendering. The future `/admin` page will be a React island with the same on-demand,
+authenticated server boundary.
 
 ## Technology responsibilities
 
@@ -106,11 +142,11 @@ on-demand rendering.
 | Astro | Routing, on-demand endpoints, cookies, server-only configuration |
 | React | Interactive household form, client validation, loading/error/success states |
 | Supabase Postgres | Durable data, constraints, atomic submission function |
-| Supabase Studio | Initial administration and CSV export |
+| Supabase Studio | Initial administration and emergency/back-office fallback |
+| React admin app (planned) | Private household/invitation operations and CSV export |
 | YAMM/Gmail | Invitation and reminder delivery |
 
-The repository currently uses Astro's standalone Node adapter as a portable build default. It must
-be replaced or confirmed once the production hosting provider is known.
+The repository uses Astro's Vercel serverless adapter for production deployment.
 
 ## Route and code map
 
@@ -125,6 +161,7 @@ be replaced or confirmed once the production hosting provider is known.
 | `src/lib/rsvp/server/repository.ts` | Server-only Supabase queries |
 | `supabase/migrations/20260713000000_create_rsvp_schema.sql` | Initial database schema and RPC |
 | `scripts/generate-rsvp-token.mjs` | Produces a raw invitation token and its hash |
+| `/admin` and `/api/admin/*` (planned) | Protected React dashboard and Astro API boundary |
 
 ## Data model
 
@@ -244,6 +281,16 @@ but the current name does not change how the opaque secret value functions.
 - Invalid links do not reveal whether a particular household or email exists.
 - YAMM click tracking must be disabled for messages containing bearer invitation URLs.
 
+### Admin protections (planned)
+
+- Admin authentication uses Supabase Auth's SSR/cookie flow, with `HttpOnly`, `Secure` production
+  cookies and no browser local-storage session.
+- Supabase Auth Site URL and allowed redirect URLs must include the production domain and any
+  preview domain used for auth testing.
+- The magic-link callback and every protected response use `Cache-Control: no-store`.
+- The admin React UI is not a security boundary; authorization is rechecked by every Astro endpoint.
+- The service-role key remains server-only even after adding a Supabase publishable key for Auth.
+
 ### Accepted risk
 
 The access URL is a bearer credential. Forwarding it gives the recipient household access until the
@@ -310,8 +357,9 @@ abstraction.
 
 ### Admin dashboard
 
-Build only after Supabase Studio usage reveals the required filters, edits, exports, and roles. Admin
-authentication should be separate from guest invitation sessions.
+Build as the focused, single-application React dashboard described above. Start with login,
+household/guest creation, and one-time invitation URL generation so the live RSVP flow can be tested
+without manual SQL. Keep Supabase Studio available as a fallback until the dashboard is proven.
 
 ### Gift registry
 

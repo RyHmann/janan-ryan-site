@@ -1,0 +1,13 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AdminApp from '../../features/admin/AdminApp';
+import AdminLogin from '../../features/admin/AdminLogin';
+import { readAdminSession } from '../../lib/admin/server/session';
+import { isAdminEmail } from '../../lib/admin/server/repository';
+export const prerender = false;
+const email = await readAdminSession(Astro.cookies);
+const authorized = email ? await isAdminEmail(email).catch(() => false) : false;
+---
+<Layout title="RSVP administration | Janan & Ryan" navLinks={[]}>
+	{authorized ? <AdminApp client:load /> : <AdminLogin client:load />}
+</Layout>
