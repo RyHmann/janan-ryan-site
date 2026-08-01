@@ -1,13 +1,13 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
-import node from '@astrojs/node';
 import react from '@astrojs/react';
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://jananandryan.info',
 	base: '/',
-	adapter: node({ mode: 'standalone' }),
+	adapter: vercel(),
 	integrations: [mdx(), react()],
 });

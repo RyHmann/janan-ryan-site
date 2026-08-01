@@ -35,8 +35,8 @@ The RSVP routes require Supabase and server-side environment variables. Start wi
   for bringing the system online.
 
 Never expose a Supabase server secret or `RSVP_SESSION_SECRET` through a `PUBLIC_` environment
-variable. The production site currently builds with Astro's standalone Node adapter; confirm or
-replace it after choosing the final hosting provider.
+variable. Production is configured for Vercel's serverless adapter; follow the
+[Vercel deployment guide](documentation/VERCEL_DEPLOYMENT.md) before switching the live domain.
 
 ## Discount Codes (Not In Repo)
 
