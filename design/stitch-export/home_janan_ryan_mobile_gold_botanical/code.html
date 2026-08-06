@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Janan &amp; Ryan - Wedding Celebration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#923249",
+                    "primary-container": "#0f5f4c",
+                    "tertiary": "#741a33",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#f7faf7",
+                    "outline": "#6f7975",
+                    "background": "#f7faf7",
+                    "secondary-container": "#E6D4B8",
+                    "on-background": "#191c1b",
+                    "on-tertiary-container": "#ffb5c0",
+                    "inverse-primary": "#8dd5bc",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb2be",
+                    "inverse-on-surface": "#eff1ee",
+                    "surface-container-high": "#e6e9e6",
+                    "inverse-surface": "#2d312f",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#8fd6be",
+                    "on-tertiary-fixed-variant": "#81243c",
+                    "on-secondary-fixed-variant": "#594238",
+                    "on-secondary-container": "#795f54",
+                    "on-tertiary-fixed": "#400014",
+                    "on-surface-variant": "#3f4945",
+                    "outline-variant": "#bfc9c3",
+                    "primary": "#004636",
+                    "on-surface": "#191c1b",
+                    "on-error": "#ffffff",
+                    "surface": "#f7faf7",
+                    "secondary-fixed": "#fedbce",
+                    "secondary-fixed-dim": "#e1c0b3",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e0e3e0",
+                    "on-primary-fixed": "#002018",
+                    "surface-tint": "#1f6a56",
+                    "surface-variant": "#e0e3e0",
+                    "tertiary-fixed": "#ffd9de",
+                    "surface-container-low": "#f2f4f1",
+                    "on-secondary-fixed": "#29170f",
+                    "primary-fixed-dim": "#8dd5bc",
+                    "surface-container": "#ecefeb",
+                    "secondary": "#72594f",
+                    "on-primary-fixed-variant": "#005140",
+                    "primary-fixed": "#a9f1d8",
+                    "surface-dim": "#d8dbd8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "section-gap": "128px",
+                    "unit": "8px",
+                    "container-max": "1200px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": [
+                            "Bodoni Moda"
+                    ],
+                    "label-sm": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-lg": [
+                            "Bodoni Moda"
+                    ],
+                    "headline-md": [
+                            "Bodoni Moda"
+                    ],
+                    "display-lg": [
+                            "Bodoni Moda"
+                    ],
+                    "body-md": [
+                            "Hanken Grotesk"
+                    ],
+                    "body-lg": [
+                            "Hanken Grotesk"
+                    ]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.1em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-md": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "display-lg": [
+                            "72px",
+                            {
+                                    "lineHeight": "80px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .botanical-divider {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+        .botanical-divider::before, .botanical-divider::after {
+            content: '';
+            height: 1px;
+            background-color: #E6D4B8;
+            flex-grow: 1;
+            max-width: 100px;
+        }
+        .botanical-divider::before { margin-right: 1rem; }
+        .botanical-divider::after { margin-left: 1rem; }
+        .soft-shadow {
+            box-shadow: 0 10px 40px rgba(15, 95, 76, 0.05);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col pt-20">
+<!-- TopNavBar -->
+<header class="bg-surface/90 dark:bg-surface-dim/90 backdrop-blur-md fixed top-0 w-full z-50 border-b border-outline-variant/30 shadow-sm shadow-primary/5">
+<div class="max-w-[1200px] mx-auto flex justify-between items-center px-gutter h-20">
+<a class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim italic" href="#">Everlasting Bloom</a>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-label-sm text-label-sm text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1" href="#">Home</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors hover:opacity-80 transition-all duration-300" href="#">Details</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors hover:opacity-80 transition-all duration-300" href="#">Travel</a>
+</nav>
+<button class="hidden md:block bg-primary text-on-primary font-label-sm text-label-sm px-6 py-3 rounded hover:opacity-90 transition-opacity">RSVP</button>
+<!-- Mobile Menu Toggle (Decorative) -->
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col gap-16 md:gap-[128px] pb-16">
+<!-- Hero Section -->
+<section class="w-full relative min-h-[618px] flex items-center justify-center px-margin-mobile md:px-margin-desktop overflow-hidden">
+<div class="absolute inset-0 z-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0iIzBGNUY0QyIvPjwvc3ZnPg==')]"></div>
+<div class="relative z-10 text-center flex flex-col items-center gap-6 max-w-2xl mx-auto">
+<div class="text-[#B5996D] font-label-sm tracking-widest uppercase mb-4">Together with their families</div>
+<h1 class="font-display-lg text-display-lg text-primary italic">Janan &amp; Ryan</h1>
+<div class="botanical-divider w-full my-2">
+<span class="material-symbols-outlined text-[#B5996D]" data-icon="eco" style="color: #E6D4B8;">eco</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Are getting married in the gardens of Wellington.</p>
+<div class="font-headline-md text-headline-md text-primary mt-4">October 14, 2024</div>
+</div>
+</section>
+<!-- Our Story / Image Focus -->
+<section class="w-full max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+<div class="md:col-span-7 relative h-[530px] rounded-lg overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A highly stylized, editorial photograph of a couple holding hands in a lush, botanical garden. The image features soft, diffuse natural lighting, enhancing the romantic, modern Art Nouveau aesthetic. The color palette emphasizes botanical greens, soft peach undertones, and crisp whites. High contrast and fine art composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChwjkoxUhPZJcKyYJP53Dvq_omT3lB983ZAvhgDDasWWEEDG793UILteP4WZfvOnhdiUO_q8nfKAFoo2MInOph3y7AeIyQEqyP2rC7HLlF7KeNh3Wd92zh4CVezOFm9El-RQC49hvcTS61w3U4QvYzVJkecCdbz8SHdsKLncUg-dsxfeegIZBh5IZkHuzauReg31yI2KfmZPuPOCCk_3lP97QzO7Ap-JNQ3hjHcjIueNWK6iMjwnMt5w"/>
+<div class="absolute inset-0 border border-transparent group-hover:border-[#E6D4B8] transition-colors duration-500 m-4 rounded pointer-events-none"></div>
+</div>
+<div class="md:col-span-4 md:col-start-9 flex flex-col gap-6 bg-secondary-container/20 p-8 rounded-lg soft-shadow border border-[#E6D4B8]/30">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-primary italic">The Proposal</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Under a canopy of weeping willows, a question was asked and a resounding 'yes' was given. We are thrilled to invite you to celebrate the next chapter of our story.</p>
+<a class="inline-flex items-center gap-2 font-label-sm text-label-sm text-primary uppercase tracking-wider mt-4 hover:opacity-70 transition-opacity" href="#">
+                    Read Our Story <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- The Details Minimal Grid -->
+<section class="w-full bg-surface-container-low py-16 px-margin-mobile md:px-margin-desktop">
+<div class="max-w-[1200px] mx-auto flex flex-col items-center gap-12">
+<div class="text-center">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-primary italic mb-4">The Details</h2>
+<div class="w-12 h-px bg-[#E6D4B8] mx-auto"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+<!-- Detail Card 1 -->
+<div class="flex flex-col items-center text-center gap-4 p-8 bg-surface rounded-lg soft-shadow border border-[#E6D4B8]/20">
+<span class="material-symbols-outlined text-primary text-4xl mb-2" data-icon="location_on">location_on</span>
+<h3 class="font-headline-md text-headline-md text-[#B5996D]">The Venue</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">The Conservatory Gardens<br/>123 Botanical Way<br/>Wellington</p>
+</div>
+<!-- Detail Card 2 -->
+<div class="flex flex-col items-center text-center gap-4 p-8 bg-surface rounded-lg soft-shadow border border-[#E6D4B8]/20">
+<span class="material-symbols-outlined text-primary text-4xl mb-2" data-icon="schedule">schedule</span>
+<h3 class="font-headline-md text-headline-md text-[#B5996D]">The Time</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Ceremony begins at<br/>Four o'clock in the afternoon<br/>Reception to follow</p>
+</div>
+<!-- Detail Card 3 -->
+<div class="flex flex-col items-center text-center gap-4 p-8 bg-surface rounded-lg soft-shadow border border-[#E6D4B8]/20">
+<span class="material-symbols-outlined text-primary text-4xl mb-2" data-icon="styler">styler</span>
+<h3 class="font-headline-md text-headline-md text-[#B5996D]">Attire</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Black Tie Optional.<br/>Garden party florals are<br/>highly encouraged.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-surface-container-lowest w-full py-section-gap flex flex-col items-center justify-center gap-unit text-center px-margin-desktop">
+<div class="font-headline-md text-headline-md text-[#B5996D] dark:text-[#E6D4B8] mb-4 italic">Everlasting Bloom</div>
+<div class="flex gap-6 mb-6">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-[#B5996D] hover:text-primary transition-colors duration-300 opacity-90 hover:opacity-100 uppercase tracking-wider" href="#">Privacy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-[#B5996D] hover:text-primary transition-colors duration-300 opacity-90 hover:opacity-100 uppercase tracking-wider" href="#">Contact</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-[#B5996D] hover:text-primary transition-colors duration-300 opacity-90 hover:opacity-100 uppercase tracking-wider" href="#">Our Story</a>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-70">© 2024 Everlasting Bloom. Crafted with Intention.</p>
+</footer>
+</body></html>

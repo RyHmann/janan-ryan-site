@@ -1,14 +1,8 @@
 export const navLinks = [
 	{ href: '/', label: 'Home' },
-	{ href: '/rsvp', label: 'RSVP' },
-	{ href: '/before-you-travel', label: 'Before You Travel' },
-	{ href: '/arriving-in-new-zealand', label: 'Arriving in New Zealand' },
-	{ href: '/wellington-guide', label: 'Wellington Guide' },
 	{ href: '/wedding-details', label: 'Wedding Details' },
-	{ href: '/where-to-stay', label: 'Where to Stay' },
-	{ href: '/things-to-do', label: 'Things to Do' },
-	{ href: '/our-favorite-places', label: 'Our Favorite Places' },
-	{ href: '/faq', label: 'FAQ / Practical Info' },
+	{ href: '/wellington-guide', label: 'Travel' },
+	{ href: '/rsvp', label: 'RSVP' },
 ];
 
 export const quickLinks = [

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Janan &amp; Ryan - Wedding Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400..900&amp;family=Hanken+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#f2e8c6",
+                    "primary-container": "#0f5f4c",
+                    "tertiary": "#8c7e5a",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#f7faf7",
+                    "outline": "#6f7975",
+                    "background": "#f7faf7",
+                    "secondary-container": "#f2e8c6",
+                    "on-background": "#191c1b",
+                    "on-tertiary-container": "#403a25",
+                    "inverse-primary": "#8dd5bc",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#d9ceaa",
+                    "inverse-on-surface": "#eff1ee",
+                    "surface-container-high": "#e6e9e6",
+                    "inverse-surface": "#2d312f",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#8fd6be",
+                    "on-tertiary-fixed-variant": "#595039",
+                    "on-secondary-fixed-variant": "#595039",
+                    "on-secondary-container": "#403a25",
+                    "on-tertiary-fixed": "#262214",
+                    "on-surface-variant": "#3f4945",
+                    "outline-variant": "#bfc9c3",
+                    "primary": "#004636",
+                    "on-surface": "#191c1b",
+                    "on-error": "#ffffff",
+                    "surface": "#f7faf7",
+                    "secondary-fixed": "#f2e8c6",
+                    "secondary-fixed-dim": "#d9ceaa",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e0e3e0",
+                    "on-primary-fixed": "#002018",
+                    "surface-tint": "#1f6a56",
+                    "surface-variant": "#e0e3e0",
+                    "tertiary-fixed": "#f2e8c6",
+                    "surface-container-low": "#f2f4f1",
+                    "on-secondary-fixed": "#262214",
+                    "primary-fixed-dim": "#8dd5bc",
+                    "surface-container": "#ecefeb",
+                    "secondary": "#8c7e5a",
+                    "on-primary-fixed-variant": "#005140",
+                    "primary-fixed": "#a9f1d8",
+                    "surface-dim": "#d8dbd8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "section-gap": "128px",
+                    "unit": "8px",
+                    "container-max": "1200px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Bodoni Moda"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "headline-lg": ["Bodoni Moda"],
+                    "headline-md": ["Bodoni Moda"],
+                    "display-lg": ["Bodoni Moda"],
+                    "body-md": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "500"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "display-lg": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.surface-container-lowest');
+        }
+        
+        .botanical-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin: 48px 0;
+        }
+        
+        .botanical-divider::before,
+        .botanical-divider::after {
+            content: '';
+            height: 1px;
+            background-color: theme('colors.secondary-fixed-dim');
+            flex: 1;
+            max-width: 100px;
+        }
+        
+        .botanical-divider svg {
+            width: 24px;
+            height: 24px;
+            fill: theme('colors.secondary-fixed-dim');
+        }
+
+        .ambient-shadow {
+            box-shadow: 0 20px 40px rgba(15, 95, 76, 0.05);
+        }
+    </style>
+</head>
+<body class="text-on-surface font-body-md bg-surface-container-lowest min-h-screen pt-20">
+<!-- TopNavBar -->
+<nav class="bg-surface/90 dark:bg-surface-dim/90 backdrop-blur-md fixed top-0 w-full z-50 border-b border-outline-variant/30 shadow-sm shadow-primary/5">
+<div class="max-w-[1200px] mx-auto flex justify-between items-center px-gutter h-20">
+<a class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim italic hover:opacity-80 transition-all duration-300 scale-95 transition-transform duration-200" href="#">Everlasting Bloom</a>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors hover:opacity-80 transition-all duration-300 scale-95 transition-transform duration-200" href="#">Home</a>
+<a class="font-label-sm text-label-sm text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1 hover:opacity-80 transition-all duration-300 scale-95 transition-transform duration-200" href="#">Details</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors hover:opacity-80 transition-all duration-300 scale-95 transition-transform duration-200" href="#">Travel</a>
+</div>
+<button class="bg-primary text-on-primary font-label-sm text-label-sm px-6 py-3 rounded hover:opacity-80 transition-all duration-300 scale-95 transition-transform duration-200 uppercase tracking-widest hidden md:block">
+                RSVP
+            </button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="max-w-container-max mx-auto px-margin-desktop py-section-gap">
+<!-- Header -->
+<header class="text-center mb-section-gap">
+<h1 class="font-display-lg text-display-lg text-primary mb-6">The Details</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                Everything you need to know to celebrate with us in Wellington.
+            </p>
+<div class="botanical-divider">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"></path>
+</svg>
+</div>
+</header>
+<!-- Venues Section (Bento Grid) -->
+<section class="mb-section-gap">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Ceremony Card -->
+<div class="md:col-span-7 bg-secondary-fixed/30 rounded-xl ambient-shadow p-8 flex flex-col justify-between">
+<div>
+<div class="bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm uppercase inline-block px-3 py-1 rounded-full mb-6">Ceremony</div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Old St Paul's</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                            34 Mulgrave Street, Pipitea, Wellington
+                        </p>
+</div>
+<div class="mt-8 border-t border-secondary-fixed-dim pt-6">
+<p class="font-label-sm text-label-sm text-primary uppercase mb-2">Arrive by 2:30 PM</p>
+<p class="font-body-md text-body-md text-on-surface-variant">The ceremony will begin promptly at 3:00 PM in this stunning timber Gothic Revival church.</p>
+</div>
+</div>
+<!-- Ceremony Image -->
+<div class="md:col-span-5 rounded-xl overflow-hidden h-[400px]">
+<div class="bg-cover bg-center w-full h-full hover:scale-105 transition-transform duration-700" data-alt="Interior of Old St Paul's church in Wellington. Warm, natural light filtering through stained glass windows onto timber Gothic Revival architecture. Botanical Art Nouveau style with a romantic, editorial atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAgp3UBduhQy0ktXvcl-J_xj0EcaWKhHoN6CTPss5BtJIWVutCFP_su41ZvC2Y8EJQZ5zWU4SWlMRioHyidq-GhYW-XGWuLzzl1AGgLa2XkPpNQ-FJFtLfto4k-J0zYdARboMYiWoN4iLK0h-RgNSgKhBncjH45n0038xjnFRpuK822aQXeLSetbyXXWfXH21UewVRbSMLiRgrMGT2mbSQkzCmMelO1qmXgYWKbvIGPB5p3EN0e2XVQEQ')"></div>
+</div>
+<!-- Reception Image -->
+<div class="md:col-span-5 rounded-xl overflow-hidden h-[400px] md:order-3">
+<div class="bg-cover bg-center w-full h-full hover:scale-105 transition-transform duration-700" data-alt="The Boat Shed venue on Wellington waterfront at dusk. Warm lights glowing from inside, reflecting on the calm water. Botanical Art Nouveau style with a romantic, minimalist luxury atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDJkvOcweoHEml-Qd49C5_kzqFDNKMnAJABJMQEqzpOByyA3xnNJbVNYtmdZXdvDxKd79JGA2B3Ok813lWoxf9hQ7fUbuUZ3fpWJKiLoRgBYNDnae2cd7a6RDCFeypt-72nZnOVhtW02zn5WpzoKAlXMkWyRiUjKGNDzyzfIYAzisYy-WT53A0Rbh1JyPaFLPgC8yKhnmBa9WrI0hfv5y7oOba7fIcQdbHoOd3srdMyRhJgHIj2RPbQwQ')"></div>
+</div>
+<!-- Reception Card -->
+<div class="md:col-span-7 bg-surface-container-low rounded-xl ambient-shadow p-8 flex flex-col justify-between md:order-4">
+<div>
+<div class="bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm uppercase inline-block px-3 py-1 rounded-full mb-6">Reception</div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">The Boat Shed</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                            Taranaki Street Wharf, Wellington Waterfront
+                        </p>
+</div>
+<div class="mt-8 border-t border-outline-variant/50 pt-6">
+<p class="font-label-sm text-label-sm text-primary uppercase mb-2">Starts at 5:30 PM</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Join us for cocktails, dinner, and dancing by the water. A short 15-minute walk from the ceremony.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Itinerary Section -->
+<section class="mb-section-gap max-w-3xl mx-auto">
+<h2 class="font-headline-md text-headline-md text-center text-primary mb-16">The Timeline</h2>
+<div class="relative border-l border-secondary-fixed-dim ml-4 md:ml-0 md:pl-0 pl-8 space-y-12">
+<!-- Timeline Item 1 -->
+<div class="relative md:flex md:items-center">
+<div class="hidden md:block w-32 text-right pr-8 font-label-sm text-label-sm text-primary uppercase">2:30 PM</div>
+<div class="absolute left-[-36px] md:left-[116px] w-4 h-4 rounded-full bg-secondary-fixed-dim border-2 border-surface-container-lowest"></div>
+<div class="md:pl-16">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Guest Arrival</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Old St Paul's Church</p>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="relative md:flex md:items-center">
+<div class="hidden md:block w-32 text-right pr-8 font-label-sm text-label-sm text-primary uppercase">3:00 PM</div>
+<div class="absolute left-[-36px] md:left-[116px] w-4 h-4 rounded-full bg-primary border-2 border-surface-container-lowest"></div>
+<div class="md:pl-16">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Ceremony</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">We say "I do."</p>
+</div>
+</div>
+<!-- Timeline Item 3 -->
+<div class="relative md:flex md:items-center">
+<div class="hidden md:block w-32 text-right pr-8 font-label-sm text-label-sm text-primary uppercase">5:30 PM</div>
+<div class="absolute left-[-36px] md:left-[116px] w-4 h-4 rounded-full bg-secondary-fixed-dim border-2 border-surface-container-lowest"></div>
+<div class="md:pl-16">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Cocktail Hour</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">The Boat Shed</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-surface-container-lowest w-full py-section-gap flex flex-col items-center justify-center gap-unit text-center px-margin-desktop">
+<div class="font-headline-md text-headline-md text-secondary dark:text-secondary-fixed mb-4">Everlasting Bloom</div>
+<div class="flex gap-6 mb-6">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary hover:text-primary transition-colors duration-300 opacity-90 hover:opacity-100 uppercase tracking-widest" href="#">Privacy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary hover:text-primary transition-colors duration-300 opacity-90 hover:opacity-100 uppercase tracking-widest" href="#">Contact</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary hover:text-primary transition-colors duration-300 opacity-90 hover:opacity-100 uppercase tracking-widest" href="#">Our Story</a>
+</div>
+<p class="font-body-md text-body-md text-secondary dark:text-secondary-fixed opacity-70">
+            © 2024 Everlasting Bloom. Crafted with Intention.
+        </p>
+</footer>
+</body></html>

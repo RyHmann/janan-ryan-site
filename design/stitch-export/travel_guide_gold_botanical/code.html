@@ -1,0 +1,280 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Travel Guide - Janan &amp; Ryan</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#923249",
+                    "primary-container": "#0f5f4c",
+                    "tertiary": "#741a33",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#f7faf7",
+                    "outline": "#6f7975",
+                    "background": "#f7faf7",
+                    "secondary-container": "#fedbce",
+                    "on-background": "#191c1b",
+                    "on-tertiary-container": "#ffb5c0",
+                    "inverse-primary": "#8dd5bc",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb2be",
+                    "inverse-on-surface": "#eff1ee",
+                    "surface-container-high": "#e6e9e6",
+                    "inverse-surface": "#2d312f",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#8fd6be",
+                    "on-tertiary-fixed-variant": "#81243c",
+                    "on-secondary-fixed-variant": "#594238",
+                    "on-secondary-container": "#795f54",
+                    "on-tertiary-fixed": "#400014",
+                    "on-surface-variant": "#3f4945",
+                    "outline-variant": "#bfc9c3",
+                    "primary": "#004636",
+                    "on-surface": "#191c1b",
+                    "on-error": "#ffffff",
+                    "surface": "#f7faf7",
+                    "secondary-fixed": "#fedbce",
+                    "secondary-fixed-dim": "#e1c0b3",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e0e3e0",
+                    "on-primary-fixed": "#002018",
+                    "surface-tint": "#1f6a56",
+                    "surface-variant": "#e0e3e0",
+                    "tertiary-fixed": "#ffd9de",
+                    "surface-container-low": "#f2f4f1",
+                    "on-secondary-fixed": "#29170f",
+                    "primary-fixed-dim": "#8dd5bc",
+                    "surface-container": "#ecefeb",
+                    "secondary": "#72594f",
+                    "on-primary-fixed-variant": "#005140",
+                    "primary-fixed": "#a9f1d8",
+                    "surface-dim": "#d8dbd8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "section-gap": "128px",
+                    "unit": "8px",
+                    "container-max": "1200px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Bodoni Moda"],
+                    "label-sm": ["Hanken Grotesk"],
+                    "headline-lg": ["Bodoni Moda"],
+                    "headline-md": ["Bodoni Moda"],
+                    "display-lg": ["Bodoni Moda"],
+                    "body-md": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "500"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "display-lg": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Ambient Botanical Shadows & Outlines */
+        .shadow-ambient {
+            box-shadow: 0 10px 40px rgba(15, 95, 76, 0.05);
+        }
+        .border-champagne {
+            border-color: #E6D4B8;
+        }
+        .bg-champagne {
+            background-color: #E6D4B8;
+        }
+        /* Custom Botanical Divider SVG */
+        .botanical-divider {
+            background-image: url("data:image/svg+xml,%3Csvg width='120' height='24' viewBox='0 0 120 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 12C50 12 40 4 30 4C20 4 10 12 0 12' stroke='%23E6D4B8' stroke-width='1.5'/%3E%3Cpath d='M60 12C70 12 80 20 90 20C100 20 110 12 120 12' stroke='%23E6D4B8' stroke-width='1.5'/%3E%3Ccircle cx='60' cy='12' r='3' fill='%23E6D4B8'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 24px;
+            width: 120px;
+            margin: 0 auto;
+        }
+        /* Hover effects */
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(15, 95, 76, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+<!-- Top Navigation from JSON -->
+<nav class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm shadow-primary/5 transition-all duration-300">
+<div class="max-w-[1200px] mx-auto flex justify-between items-center px-gutter h-20">
+<!-- Brand Logo -->
+<a class="font-headline-md text-headline-md text-primary italic hover:opacity-80 transition-all duration-300 scale-95 transition-transform duration-200" href="#">
+                Everlasting Bloom
+            </a>
+<!-- Navigation Links (Desktop) -->
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors hover:opacity-80 transition-all duration-300" href="#">Home</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors hover:opacity-80 transition-all duration-300" href="#">Details</a>
+<a class="font-label-sm text-label-sm text-primary font-bold border-b-2 border-primary pb-1 hover:opacity-80 transition-all duration-300" href="#">Travel</a>
+</div>
+<!-- Primary Action -->
+<button class="bg-primary text-on-primary font-label-sm text-label-sm px-6 py-3 rounded hover:opacity-90 transition-opacity">
+                RSVP
+            </button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[140px] pb-section-gap px-gutter md:px-margin-desktop w-full max-w-container-max mx-auto">
+<!-- Hero Section: Editorial Header -->
+<header class="text-center mb-section-gap">
+<h1 class="font-display-lg text-display-lg text-primary mb-6">Wellington</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-8">
+                A curated guide to the culinary capital. From windswept coasts to hidden laneways, discover the places we love most in the city we call home.
+            </p>
+<div class="botanical-divider"></div>
+</header>
+<!-- Bento Grid: Arrival & Stay -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-section-gap">
+<!-- Arriving (Spans 5 columns) -->
+<div class="md:col-span-5 bg-surface-container-lowest shadow-ambient p-8 border border-champagne/30 rounded flex flex-col justify-between card-hover transition-all duration-300">
+<div>
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 0;">flight</span>
+<h2 class="font-headline-md text-headline-md text-primary">Arriving</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-6">
+                        Wellington Airport (WLG) is conveniently located just 15 minutes from the city center. Taxis and ride-shares are readily available outside the terminal.
+                    </p>
+<div class="space-y-4">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary text-sm mt-1">directions_car</span>
+<div>
+<h3 class="font-label-sm text-label-sm text-primary uppercase">Transport</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">The Airport Express Bus ($9) departs every 20 minutes.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Image Offset (Spans 7 columns) -->
+<div class="md:col-span-7 h-[400px] relative rounded overflow-hidden">
+<img alt="Wellington Harbor" class="object-cover w-full h-full" data-alt="A sweeping, moody landscape photograph of Wellington harbor viewed from Mount Victoria at golden hour. Soft, diffused light hits the rolling hills and deep green foliage. The aesthetic is filmic, slightly desaturated, emphasizing the raw natural beauty and botanical richness of the New Zealand coast. High editorial quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCdUIoJyYF2dZnk_kDxRIPSzBxKGnt85tbk9ZXKVWbSyclF065dx0Qo2llkYZd1EBVNmzEUWAXvDMa2CVEbsngtgkYlSeJ8AYmJ7Danwco3JIyGEeDuZ8e_hRbiMdSwi5HOpKPcQBkC5OeP-vTf_IsgB3b3BpqwR5EUK9LYXAYfy_yykvK94Pgv2MViYsC8Ix9oJ7OWoxWzRqZWYs7NA-P0arMd3B6v7MxhZpSjkKnYFq0TeAk5IHKXg">
+<div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+</div>
+</section>
+<!-- Accommodations Section: Asymmetric -->
+<section class="mb-section-gap">
+<div class="flex flex-col md:flex-row items-end justify-between mb-12">
+<h2 class="font-headline-lg text-headline-lg text-primary">Places to Stay</h2>
+<div class="w-24 h-px bg-champagne mb-4 hidden md:block"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Hotel Card 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden rounded mb-6 relative">
+<img alt="Hotel Interior" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700" data-alt="Interior photography of a luxury boutique hotel room in Wellington. Minimalist styling with rich textures: velvet drapes in deep emerald green, a crisp white bed, and subtle champagne gold light fixtures. A large window shows a grey, moody cityscape. The lighting is soft, ambient, and sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPcSevRVaie2U48BY47BupnxMkmwfYEmhBRj_do2TKqc8qP4BFmygmLCLFroujtiJYCYyklVHH8Odjzz2hQku9a9jxbMFgH8udvSAgcFEaVA2wS9-SETaDX4dzPGLhlrgoJGPLwQaX4yewidWFf9xNJMrE-yNBTUI6s9nLYVIz8Kj3c8YmHcJ6oG7BKqEbtzNsfLtU8SHYFdShEWphfFLAVJdzH4h_TUYxAopcLNuZ5ChtmxJ32_y30A">
+<div class="absolute inset-0 border border-transparent group-hover:border-[#E6D4B8] transition-colors duration-300 rounded pointer-events-none z-10 m-2"></div>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">The Intrepid</h3>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-3">Boutique • Te Aro</p>
+<p class="font-body-md text-body-md text-on-surface-variant">A beautifully restored heritage building offering an intimate, design-forward stay right in the heart of the Cuba Street precinct.</p>
+</div>
+<!-- Hotel Card 2 -->
+<div class="group cursor-pointer md:mt-12">
+<div class="aspect-[3/4] overflow-hidden rounded mb-6 relative">
+<img alt="Hotel Exterior" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700" data-alt="Exterior shot of a grand, historic hotel in Wellington with elegant Art Nouveau architectural details. The stone facade is illuminated by warm, welcoming street lamps against an early evening blue hour sky. Botanical motifs are visible in the ironwork. High contrast, elegant composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvUmed1qeU8QL8UsQiK3LCmPvkBiYOtG7c5pHVnP7YX2UUuJZALq4LtNHSfiePq7wqGsI3kWDm72me3IKmFaZ4vK5Mf_uIlXqui9u9umUrZzyboNYglGFkhv7CLTvPOUo05CglgRRWLgao_uSdPvVRqZ7y1MsrosR1-kT5swLVy2KPb6xc4RHVqwPIZPEaBqxtntn4MS584ye4FT-kl6laLoQSjeOJ6gBzmgohD7KbY5IigO5856pwTA">
+<div class="absolute inset-0 border border-transparent group-hover:border-[#E6D4B8] transition-colors duration-300 rounded pointer-events-none z-10 m-2"></div>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Naumi Studio</h3>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-3">Eclectic • Te Aro</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Maximalist design meets heritage architecture. A sensory experience with rich colors and intricate details.</p>
+</div>
+<!-- Hotel Card 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-[3/4] overflow-hidden rounded mb-6 relative">
+<img alt="Hotel Lobby" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700" data-alt="A serene, minimalist hotel lobby with large windows overlooking the harbor. Soft peach and muted green furniture create a calming palette. A prominent floral arrangement in the center features wild, organic botanical shapes. The lighting is bright and natural." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzo1ylnS1hGC8uCLMYeejdw8sr0gDkTyWHpCO4HuiXNcfIcvbxcLmJNDOHpikpelwfu2gbzthBa2reRoRfPqRn-01HhUBFtF10gm5fT8lZOkWs6FUth1TOKXrt7_x3I78-pi4kPFBIiUDP6cYGB-Mc-YDZCtAkLQ-aF1l_uXf1vatKSYlTZCsHx3TirDP84-g4CvmoGT1qDIwAQC3mkKLZ9ioSYPGSLKAnvXUd52XK55O5PNpENYDJCw">
+<div class="absolute inset-0 border border-transparent group-hover:border-[#E6D4B8] transition-colors duration-300 rounded pointer-events-none z-10 m-2"></div>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Ohtel</h3>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-3">Mid-Century • Oriental Bay</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Overlooking the marina, offering bespoke mid-century furnishings and effortless coastal elegance.</p>
+</div>
+</div>
+</section>
+<!-- Our Favorites: Glassmorphism / Botanical Cards -->
+<section class="relative py-section-gap">
+<!-- Decorative Background Element (Subtle) -->
+<div class="absolute inset-0 bg-surface-container-low rounded-xl -z-10 transform -rotate-1 scale-105"></div>
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Our Favorites</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">Where to eat, drink, and wander.</p>
+<div class="botanical-divider mt-8"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<!-- Favorite 1: Rita -->
+<div class="flex flex-col md:flex-row gap-8 bg-surface-container-lowest shadow-ambient p-6 rounded border border-champagne/20 items-center card-hover">
+<div class="w-full md:w-1/2 aspect-square rounded overflow-hidden">
+<img alt="Rita Restaurant" class="object-cover w-full h-full" data-alt="A close-up, editorial food shot of a beautifully plated, seasonal dish at a fine dining restaurant. The plate sits on a rustic wooden table. The lighting is moody and directional, highlighting the textures of fresh botanical garnishes and deep, rich sauces. Colors emphasize earthy greens, soft peach, and deep reds." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH85YPuUTeveS8pFUA5CJhLvF804iYBOO9P8P7K_41HbSuzvQDkXEhP40bDXlUcH8e8KEj57K-v6UQzTsfJFvX6ba2s1bpH6QJTr7e5j8ahuYpLOVFZYS0g5mea7qU_JLqdqEutuUVNdbtTTQafjXjxqFtUubxFhKivYtzyHc9WW4xorUu_B04BVRFbJztec59k_vPb8Y5WtIXcdgFKapf0sOsxPWk3WhGzntG3-Wnt3boJX2NBeGO6g">
+</div>
+<div class="w-full md:w-1/2 space-y-4">
+<div class="inline-block bg-[#E6D4B8] text-secondary font-label-sm text-[10px] px-3 py-1 rounded-full uppercase tracking-widest mb-2">Must Book</div>
+<h3 class="font-headline-md text-headline-md text-primary">Sketchbook Cafe</h3>
+<p class="font-label-sm text-label-sm text-secondary uppercase border-b border-champagne pb-2 inline-block">Cafe • Wellington</p>
+<p class="font-body-md text-body-md text-on-surface-variant pt-2">A cozy neighborhood gem known for its creative atmosphere, exceptional coffee, and freshly baked pastries. The perfect spot to sketch, read, or simply enjoy a quiet morning in the city.</p>
+</div>
+</div>
+<!-- Favorite 2: Customs -->
+<div class="flex flex-col md:flex-row-reverse gap-8 bg-surface-container-lowest shadow-ambient p-6 rounded border border-champagne/20 items-center card-hover">
+<div class="w-full md:w-1/2 aspect-square rounded overflow-hidden">
+<img alt="Customs Coffee" class="object-cover w-full h-full" data-alt="A bright, airy coffee shop interior in Wellington. Sunlight streams across a wooden counter where a barista pours perfect latte art. The space is minimalist, featuring soft peach walls, brass accents, and lush hanging green plants. The aesthetic is clean, modern, and inviting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv5UDuywXF4xsyjsoaqHP3WexjzXbhOXLAZe7B_VxQ85AeF0u6kTmeNJXGhdGhwU0kltavJMVhf1dNZwHhHKGufXX895ooKiHxpT0tL12nfw8tiGXNzevZdQR_KgH3DfieCr9t2Lq6btU1i2wgq_GMVAeCuGMaF50fvtVPFtNy9fiHRXb8Crv_Wvutw5FEVE0EGW9xA8lWPFKJ4BBjTjaV5Bft0lM3pCRrqsXVk5a72_hXJ1EHaP1Afg">
+</div>
+<div class="w-full md:w-1/2 space-y-4 text-left md:text-right">
+<h3 class="font-headline-md text-headline-md text-primary">Customs</h3>
+<p class="font-label-sm text-label-sm text-secondary uppercase border-b border-champagne pb-2 inline-block">Coffee • Te Aro</p>
+<p class="font-body-md text-body-md text-on-surface-variant pt-2">
+                            The best filter coffee in the city, served alongside exceptional toast in a sun-drenched space. The perfect starting point for a Saturday morning stroll.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer from JSON -->
+<footer class="w-full py-section-gap bg-surface-container-low flex flex-col items-center justify-center gap-unit text-center px-margin-desktop">
+<div class="font-headline-md text-headline-md text-secondary mb-4">
+            Everlasting Bloom
+        </div>
+<div class="flex gap-6 mb-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-300 opacity-90 hover:opacity-100" href="#">Privacy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-300 opacity-90 hover:opacity-100" href="#">Contact</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors duration-300 opacity-90 hover:opacity-100" href="#">Our Story</a>
+</div>
+<p class="font-body-md text-body-md text-secondary">
+            © 2024 Everlasting Bloom. Crafted with Intention.
+        </p>
+</footer>
+
+
+</body></html>
