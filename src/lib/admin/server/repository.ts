@@ -37,3 +37,14 @@ export async function createInvitation(householdId: string, expiresAt: string) {
 	if (error) throw error; return rawToken;
 }
 export async function revokeInvitation(id: string) { const { error } = await getSupabaseAdmin().from('invitation_tokens').update({ revoked_at: new Date().toISOString() }).eq('id', id).is('revoked_at', null); if (error) throw error; }
+
+export async function createInvitationBatch(input: {
+	households: { displayName: string; primaryEmail: string; guests: { fullName: string; displayOrder: number }[]; tokenHash: string }[];
+	expiresAt: string;
+}) {
+	const { error } = await getSupabaseAdmin().rpc('create_admin_household_batch', {
+		p_households: input.households,
+		p_expires_at: input.expiresAt,
+	});
+	if (error) throw error;
+}

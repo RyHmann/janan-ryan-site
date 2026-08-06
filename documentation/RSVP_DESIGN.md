@@ -89,6 +89,11 @@ The first admin release should cover only the workflow needed to operate invitat
 - generate or revoke an invitation; and
 - display/copy a newly generated raw invitation URL once, plus export CSV data.
 
+The dashboard also supports an all-or-nothing guest-list CSV import that creates households,
+assigns every imported guest to both events, generates one invitation per household, and downloads
+a one-time YAMM-ready URL CSV. The operational procedure is documented in
+[GUEST_IMPORT_AND_YAMM.md](./GUEST_IMPORT_AND_YAMM.md).
+
 Editing RSVP responses can follow after the above flow is proven. TanStack Query is the preferred
 client-side data-fetching/mutation layer; Redux is not required unless substantially more shared
 browser-only state emerges.
