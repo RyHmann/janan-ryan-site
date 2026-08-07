@@ -20,7 +20,7 @@
 
 .rsvp-header h1,
 .rsvp-state h1 {
-	font: 500 clamp(2.5rem, 6vw, 4.5rem)/1 "Bodoni Moda",serif;
+	font: 500 clamp(2.5rem, 6vw, 4.5rem)/1 var(--font-headline);
 	color:var(--green);
 }
 
@@ -94,7 +94,7 @@
 
 .rsvp-guest-heading h2 {
 	margin: 0;
-	font:500 1.75rem "Bodoni Moda",serif;
+	font:500 1.75rem var(--font-headline);
 	color:var(--green);
 }
 
