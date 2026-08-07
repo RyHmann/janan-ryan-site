@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 
 const stays = [
   {
@@ -25,18 +26,9 @@ const stays = [
   },
 ];
 
-const favourites = [
-  {
-    name: 'Sketchbook Cafe', category: 'Cafe', area: 'Wellington', badge: 'Must book',
-    description: 'A cozy neighbourhood gem known for its creative atmosphere, exceptional coffee, and freshly baked pastries. The perfect spot to sketch, read, or simply enjoy a quiet morning in the city.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDH85YPuUTeveS8pFUA5CJhLvF804iYBOO9P8P7K_41HbSuzvQDkXEhP40bDXlUcH8e8KEj57K-v6UQzTsfJFvX6ba2s1bpH6QJTr7e5j8ahuYpLOVFZYS0g5mea7qU_JLqdqEutuUVNdbtTTQafjXjxqFtUubxFhKivYtzyHc9WW4xorUu_B04BVRFbJztec59k_vPb8Y5WtIXcdgFKapf0sOsxPWk3WhGzntG3-Wnt3boJX2NBeGO6g',
-  },
-  {
-    name: 'Customs', category: 'Coffee', area: 'Te Aro',
-    description: 'The best filter coffee in the city, served alongside exceptional toast in a sun-drenched space. The perfect starting point for a Saturday morning stroll.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBv5UDuywXF4xsyjsoaqHP3WexjzXbhOXLAZe7B_VxQ85AeF0u6kTmeNJXGhdGhwU0kltavJMVhf1dNZwHhHKGufXX895ooKiHxpT0tL12nfw8tiGXNzevZdQR_KgH3DfieCr9t2Lq6btU1i2wgq_GMVAeCuGMaF50fvtVPFtNy9fiHRXb8Crv_Wvutw5FEVE0EGW9xA8lWPFKJ4BBjTjaV5Bft0lM3pCRrqsXVk5a72_hXJ1EHaP1Afg',
-  },
-];
+const [content] = await getCollection('wellingtonGuide');
+if (!content) throw new Error('Wellington guide content entry is missing.');
+const { favourites } = content.data;
 ---
 <Layout title="Wellington Guide | Janan & Ryan" description="Our favourite places to stay, eat, drink, and wander in Wellington.">
   <div class="guide">
@@ -62,7 +54,7 @@ const favourites = [
 
     <section class="favourites" aria-labelledby="favourites-heading">
       <div class="favourites-intro"><h2 id="favourites-heading">Our Favorites</h2><p>Where to eat, drink, and wander.</p><div class="botanical-divider" aria-hidden="true"></div></div>
-      <div class="favourite-grid">{favourites.map((favourite, index) => <article class:list={["favourite-card", { reverse: index === 1 }]}><div class="favourite-image"><img src={favourite.image} alt={favourite.name} loading="lazy" /></div><div class="favourite-copy">{favourite.badge && <span class="badge">{favourite.badge}</span>}<h3>{favourite.name}</h3><p class="eyebrow">{favourite.category} <i>•</i> {favourite.area}</p><p>{favourite.description}</p></div></article>)}</div>
+      <div class="favourite-grid">{favourites.map((favourite, index) => <article class:list={["favourite-card", { reverse: index % 2 === 1 }]}><div class="favourite-image"><img src={favourite.image} alt={favourite.imageAlt} loading="lazy" /></div><div class="favourite-copy">{favourite.badge && <span class="badge">{favourite.badge}</span>}<h3>{favourite.name}</h3><p class="eyebrow">{favourite.category} <i>•</i> {favourite.area}</p><p>{favourite.description}</p></div></article>)}</div>
     </section>
   </div>
 </Layout>

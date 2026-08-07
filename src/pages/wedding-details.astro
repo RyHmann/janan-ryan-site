@@ -1,14 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 import oldStPauls from '../assets/images/wedding/old_st_paul.png';
 import boatshed from '../assets/images/wedding/boatshed.jpg';
 
-const timeline = [
-  { time: '1:15 PM', title: 'Guest Arrival', detail: "Old St Paul's" },
-  { time: '1:30 PM', title: 'Ceremony', detail: 'We say “I do.”', featured: true },
-  { time: 'Following the ceremony', title: 'Reception', detail: 'The Boatshed' },
-  { time: '11:30 PM', title: 'Farewell', detail: 'A wonderful evening comes to a close.' },
-];
+const [content] = await getCollection('weddingDetails');
+if (!content) throw new Error('Wedding details content entry is missing.');
+const { ceremony, reception, timeline } = content.data;
 ---
 <Layout title="Wedding Details | Janan & Ryan" description="Everything you need to know to celebrate with us in Wellington.">
   <div class="details">
@@ -20,14 +18,14 @@ const timeline = [
 
     <section class="venues" aria-label="Wedding venues">
       <article class="venue-card ceremony-card">
-        <div><span class="event-label">Ceremony</span><h2>Old St Paul’s</h2><p>34 Mulgrave Street, Pipitea, Wellington 6011</p></div>
-        <div class="venue-note"><strong>Arrive by 1:15 PM</strong><p>The ceremony will begin promptly at 1:30 PM in this stunning timber Gothic Revival church.</p><a href="https://maps.app.goo.gl/BJMRQHSxwZ5Qu6Xi9" target="_blank" rel="noreferrer">Get directions <span aria-hidden="true">↗</span></a></div>
+        <div><span class="event-label">Ceremony</span><h2>{ceremony.name}</h2><p>{ceremony.address}</p></div>
+        <div class="venue-note"><strong>{ceremony.arrivalNote}</strong><p>{ceremony.description}</p><a href={ceremony.directionsUrl} target="_blank" rel="noreferrer">Get directions <span aria-hidden="true">↗</span></a></div>
       </article>
       <div class="venue-image ceremony-image"><img src={oldStPauls.src} alt="The interior of Old St Paul's" /></div>
       <div class="venue-image reception-image"><img src={boatshed.src} alt="The Boatshed on Wellington waterfront" /></div>
       <article class="venue-card reception-card">
-        <div><span class="event-label">Reception</span><h2>The Boatshed</h2><p>Taranaki Street Wharf, Wellington Waterfront, 6011</p></div>
-        <div class="venue-note"><strong>After the ceremony</strong><p>Please make your way to the waterfront for an evening of dinner and dancing. It’s a quick Uber or about a 20-minute walk along the waterfront.</p><a href="https://maps.app.goo.gl/KQwEyBbXWwK9VGoM7" target="_blank" rel="noreferrer">Get directions <span aria-hidden="true">↗</span></a></div>
+        <div><span class="event-label">Reception</span><h2>{reception.name}</h2><p>{reception.address}</p></div>
+        <div class="venue-note"><strong>{reception.arrivalNote}</strong><p>{reception.description}</p><a href={reception.directionsUrl} target="_blank" rel="noreferrer">Get directions <span aria-hidden="true">↗</span></a></div>
       </article>
     </section>
 

@@ -25,6 +25,12 @@ Type-check Astro and React files:
 npm run check
 ```
 
+## Editing Guest-Facing Content
+
+Wedding details and Wellington guide recommendations are intentionally editable without touching
+the page layouts. See [Content editing](documentation/CONTENT_EDITING.md) for the files to edit,
+safe YAML examples, image guidance, and validation steps.
+
 ## RSVP Development Setup
 
 The RSVP routes require Supabase and server-side environment variables. Start with these documents:
@@ -78,10 +84,13 @@ In markdown pages, use the component with a key:
 ```text
 /
 ├── documentation/
+│   ├── CONTENT_EDITING.md
 │   ├── RSVP_DESIGN.md
 │   └── NEXT_STEPS_SUPABASE.md
 ├── public/
 ├── src/
+│   ├── content/
+│   ├── content.config.ts
 │   ├── data/
 │   ├── layouts/
 │   ├── pages/
