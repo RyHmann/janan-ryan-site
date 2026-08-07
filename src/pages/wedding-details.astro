@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import oldStPauls from '../assets/images/wedding/old_st_paul.png';
+import boatshed from '../assets/images/wedding/boatshed.jpg';
+
+const timeline = [
+  { time: '1:15 PM', title: 'Guest Arrival', detail: "Old St Paul's" },
+  { time: '1:30 PM', title: 'Ceremony', detail: 'We say “I do.”', featured: true },
+  { time: 'Following the ceremony', title: 'Reception', detail: 'The Boatshed' },
+  { time: '11:30 PM', title: 'Farewell', detail: 'A wonderful evening comes to a close.' },
+];
+---
+<Layout title="Wedding Details | Janan & Ryan" description="Everything you need to know to celebrate with us in Wellington.">
+  <div class="details">
+    <header class="hero">
+      <h1>The Details</h1>
+      <p>Everything you need to know to celebrate with us in Wellington.</p>
+      <div class="hero-mark" aria-hidden="true">✦</div>
+    </header>
+
+    <section class="venues" aria-label="Wedding venues">
+      <article class="venue-card ceremony-card">
+        <div><span class="event-label">Ceremony</span><h2>Old St Paul’s</h2><p>34 Mulgrave Street, Pipitea, Wellington 6011</p></div>
+        <div class="venue-note"><strong>Arrive by 1:15 PM</strong><p>The ceremony will begin promptly at 1:30 PM in this stunning timber Gothic Revival church.</p><a href="https://maps.app.goo.gl/BJMRQHSxwZ5Qu6Xi9" target="_blank" rel="noreferrer">Get directions <span aria-hidden="true">↗</span></a></div>
+      </article>
+      <div class="venue-image ceremony-image"><img src={oldStPauls.src} alt="The interior of Old St Paul's" /></div>
+      <div class="venue-image reception-image"><img src={boatshed.src} alt="The Boatshed on Wellington waterfront" /></div>
+      <article class="venue-card reception-card">
+        <div><span class="event-label">Reception</span><h2>The Boatshed</h2><p>Taranaki Street Wharf, Wellington Waterfront, 6011</p></div>
+        <div class="venue-note"><strong>After the ceremony</strong><p>Please make your way to the waterfront for an evening of dinner and dancing. It’s a quick Uber or about a 20-minute walk along the waterfront.</p><a href="https://maps.app.goo.gl/KQwEyBbXWwK9VGoM7" target="_blank" rel="noreferrer">Get directions <span aria-hidden="true">↗</span></a></div>
+      </article>
+    </section>
+
+    <section class="timeline" aria-labelledby="timeline-heading">
+      <h2 id="timeline-heading">The Timeline</h2>
+      <ol>{timeline.map((item) => <li class:list={[{ featured: item.featured }]}><time>{item.time}</time><span class="dot" aria-hidden="true"></span><div><h3>{item.title}</h3><p>{item.detail}</p></div></li>)}</ol>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .details{width:min(100% - 40px,1072px);margin:0 auto;padding:104px 0 128px}.details h1,.details h2,.details h3{font-family:"Bodoni Moda",serif;color:var(--green)}.hero{text-align:center;margin-bottom:106px}.hero h1{font-size:clamp(3.5rem,7vw,5.6rem);font-weight:600;line-height:.95;letter-spacing:-.045em;margin:0 0 22px}.hero p{font-size:1.12rem;color:var(--muted);margin:0}.hero-mark{display:grid;place-items:center;width:26px;height:26px;margin:43px auto 0;color:var(--green);font-size:1rem;border:1.5px solid currentColor;border-radius:50%;line-height:1}.venues{display:grid;grid-template-columns:7fr 5fr;gap:26px}.venue-card{display:flex;min-height:338px;flex-direction:column;justify-content:space-between;padding:38px 32px;border-radius:8px;box-shadow:0 20px 40px #0f5f4c0d}.ceremony-card{background:#faf7eb}.reception-card{background:var(--paper-deep)}.event-label{display:inline-block;padding:5px 12px;border-radius:999px;background:#f2e8c6;color:#403a25;font-size:.63rem;line-height:1;font-weight:700;letter-spacing:.1em;text-transform:uppercase}.venue-card h2{font-size:clamp(2.5rem,4vw,3.55rem);font-weight:500;line-height:1;margin:27px 0 16px}.venue-card>div>p,.venue-note p{font-size:.95rem;line-height:1.5;color:var(--muted);margin:0}.venue-note{padding-top:22px;border-top:1px solid #d9ceaa}.reception-card .venue-note{border-top-color:var(--line)}.venue-note strong{display:block;margin-bottom:8px;color:var(--green);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}.venue-note a{display:inline-block;margin-top:14px;color:var(--green);font-weight:700;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}.venue-note a:hover{text-decoration:underline;text-underline-offset:4px}.venue-note a span{font-size:1rem;padding-left:3px}.venue-image{min-height:338px;overflow:hidden;border-radius:8px;background:var(--paper-deep)}.venue-image img{display:block;width:100%;height:100%;object-fit:cover}.reception-image{grid-column:1;grid-row:2}.reception-card{grid-column:2;grid-row:2}.timeline{max-width:650px;margin:124px auto 0}.timeline>h2{text-align:center;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:500;line-height:1;margin:0 0 62px}.timeline ol{position:relative;margin:0;padding:0 0 0 160px;list-style:none}.timeline ol::before{content:"";position:absolute;left:103px;top:3px;bottom:3px;width:1px;background:#d9ceaa}.timeline li{position:relative;display:grid;grid-template-columns:112px 20px 1fr;column-gap:16px;align-items:center;min-height:93px}.timeline time{position:absolute;right:calc(100% - 103px);width:130px;padding-right:24px;color:var(--green);font-size:.67rem;font-weight:700;letter-spacing:.06em;text-align:right;text-transform:uppercase}.timeline .dot{grid-column:2;display:block;width:12px;height:12px;border:2px solid var(--paper);border-radius:50%;background:#d9ceaa;z-index:1}.timeline li.featured .dot{background:var(--green)}.timeline li>div{grid-column:3}.timeline h3{font-size:2rem;font-weight:500;line-height:1;margin:0 0 7px}.timeline li p{margin:0;color:var(--muted);font-size:.9rem}@media (hover:hover){.venue-image img{transition:transform .7s ease}.venue-image:hover img{transform:scale(1.04)}}@media(max-width:760px){.details{width:min(100% - 40px,560px);padding:62px 0 80px}.hero{margin-bottom:65px}.hero h1{font-size:3.7rem}.hero p{font-size:1rem}.venues{grid-template-columns:1fr;gap:18px}.venue-card{min-height:330px;padding:31px 27px}.venue-card h2{font-size:2.7rem}.venue-image{min-height:285px}.ceremony-image{grid-row:2}.reception-image{grid-column:1;grid-row:3}.reception-card{grid-column:1;grid-row:4}.timeline{margin-top:84px;max-width:450px}.timeline>h2{margin-bottom:44px}.timeline ol{padding-left:46px}.timeline ol::before{left:7px}.timeline li{grid-template-columns:18px 1fr;column-gap:15px;min-height:102px;padding-top:25px}.timeline time{top:0;left:33px;width:auto;padding:0;text-align:left}.timeline .dot{grid-column:1}.timeline li>div{grid-column:2}.timeline h3{font-size:1.8rem}}@media(max-width:430px){.details{width:min(100% - 32px,560px)}.hero h1{font-size:3.25rem}.venue-card h2{font-size:2.35rem}}
+</style>
