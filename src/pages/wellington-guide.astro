@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const stays = [
+  {
+    name: 'The Intrepid',
+    type: 'Boutique',
+    area: 'Te Aro',
+    description: 'A beautifully restored heritage building offering an intimate, design-forward stay right in the heart of the Cuba Street precinct.',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBPcSevRVaie2U48BY47BupnxMkmwfYEmhBRj_do2TKqc8qP4BFmygmLCLFroujtiJYCYyklVHH8Odjzz2hQku9a9jxbMFgH8udvSAgcFEaVA2wS9-SETaDX4dzPGLhlrgoJGPLwQaX4yewidWFf9xNJMrE-yNBTUI6s9nLYVIz8Kj3c8YmHcJ6oG7BKqEbtzNsfLtU8SHYFdShEWphfFLAVJdzH4h_TUYxAopcLNuZ5ChtmxJ32_y30A',
+  },
+  {
+    name: 'Naumi Studio',
+    type: 'Eclectic',
+    area: 'Te Aro',
+    description: 'Maximalist design meets heritage architecture. A sensory experience with rich colours and intricate details.',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCvUmed1qeU8QL8UsQiK3LCmPvkBiYOtG7c5pHVnP7YX2UUuJZALq4LtNHSfiePq7wqGsI3kWDm72me3IKmFaZ4vK5Mf_uIlXqui9u9umUrZzyboNYglGFkhv7CLTvPOUo05CglgRRWLgao_uSdPvVRqZ7y1MsrosR1-kT5swLVy2KPb6xc4RHVqwPIZPEaBqxtntn4MS584ye4FT-kl6laLoQSjeOJ6gBzmgohD7KbY5IigO5856pwTA',
+  },
+  {
+    name: 'Ohtel',
+    type: 'Mid-century',
+    area: 'Oriental Bay',
+    description: 'Overlooking the marina, offering bespoke mid-century furnishings and effortless coastal elegance.',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBzo1ylnS1hGC8uCLMYeejdw8sr0gDkTyWHpCO4HuiXNcfIcvbxcLmJNDOHpikpelwfu2gbzthBa2reRoRfPqRn-01HhUBFtF10gm5fT8lZOkWs6FUth1TOKXrt7_x3I78-pi4kPFBIiUDP6cYGB-Mc-YDZCtAkLQ-aF1l_uXf1vatKSYlTZCsHx3TirDP84-g4CvmoGT1qDIwAQC3mkKLZ9ioSYPGSLKAnvXUd52XK55O5PNpENYDJCw',
+  },
+];
+
+const favourites = [
+  {
+    name: 'Sketchbook Cafe', category: 'Cafe', area: 'Wellington', badge: 'Must book',
+    description: 'A cozy neighbourhood gem known for its creative atmosphere, exceptional coffee, and freshly baked pastries. The perfect spot to sketch, read, or simply enjoy a quiet morning in the city.',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDH85YPuUTeveS8pFUA5CJhLvF804iYBOO9P8P7K_41HbSuzvQDkXEhP40bDXlUcH8e8KEj57K-v6UQzTsfJFvX6ba2s1bpH6QJTr7e5j8ahuYpLOVFZYS0g5mea7qU_JLqdqEutuUVNdbtTTQafjXjxqFtUubxFhKivYtzyHc9WW4xorUu_B04BVRFbJztec59k_vPb8Y5WtIXcdgFKapf0sOsxPWk3WhGzntG3-Wnt3boJX2NBeGO6g',
+  },
+  {
+    name: 'Customs', category: 'Coffee', area: 'Te Aro',
+    description: 'The best filter coffee in the city, served alongside exceptional toast in a sun-drenched space. The perfect starting point for a Saturday morning stroll.',
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBv5UDuywXF4xsyjsoaqHP3WexjzXbhOXLAZe7B_VxQ85AeF0u6kTmeNJXGhdGhwU0kltavJMVhf1dNZwHhHKGufXX895ooKiHxpT0tL12nfw8tiGXNzevZdQR_KgH3DfieCr9t2Lq6btU1i2wgq_GMVAeCuGMaF50fvtVPFtNy9fiHRXb8Crv_Wvutw5FEVE0EGW9xA8lWPFKJ4BBjTjaV5Bft0lM3pCRrqsXVk5a72_hXJ1EHaP1Afg',
+  },
+];
+---
+<Layout title="Wellington Guide | Janan & Ryan" description="Our favourite places to stay, eat, drink, and wander in Wellington.">
+  <div class="guide">
+    <header class="hero">
+      <h1>Wellington</h1>
+      <p>A curated guide to the culinary capital. From windswept coasts to hidden laneways, discover the places we love most in the city we call home.</p>
+      <div class="botanical-divider" aria-hidden="true"></div>
+    </header>
+
+    <section class="arrival" aria-labelledby="arrival-heading">
+      <div class="arrival-copy">
+        <div class="title-with-icon"><span aria-hidden="true">✦</span><h2 id="arrival-heading">Arriving</h2></div>
+        <p>Wellington Airport (WLG) is conveniently located just 15 minutes from the city centre. Taxis and ride-shares are readily available outside the terminal.</p>
+        <div class="arrival-detail"><span aria-hidden="true">⌂</span><div><h3>Transport</h3><p>The Airport Express Bus ($9) departs every 20 minutes.</p></div></div>
+      </div>
+      <div class="arrival-image"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCdUIoJyYF2dZnk_kDxRIPSzBxKGnt85tbk9ZXKVWbSyclF065dx0Qo2llkYZd1EBVNmzEUWAXvDMa2CVEbsngtgkYlSeJ8AYmJ7Danwco3JIyGEeDuZ8e_hRbiMdSwi5HOpKPcQBkC5OeP-vTf_IsgB3b3BpqwR5EUK9LYXAYfy_yykvK94Pgv2MViYsC8Ix9oJ7OWoxWzRqZWYs7NA-P0arMd3B6v7MxhZpSjkKnYFq0TeAk5IHKXg" alt="Wellington harbour viewed from Mount Victoria" /></div>
+    </section>
+
+    <section class="stays" aria-labelledby="stays-heading">
+      <div class="section-heading"><h2 id="stays-heading">Places to Stay</h2><span aria-hidden="true"></span></div>
+      <div class="stay-grid">{stays.map((stay) => <article class="stay-card"><div class="stay-image"><img src={stay.image} alt={`${stay.name} hotel`} loading="lazy" /></div><h3>{stay.name}</h3><p class="eyebrow">{stay.type} <i>•</i> {stay.area}</p><p>{stay.description}</p></article>)}</div>
+    </section>
+
+    <section class="favourites" aria-labelledby="favourites-heading">
+      <div class="favourites-intro"><h2 id="favourites-heading">Our Favorites</h2><p>Where to eat, drink, and wander.</p><div class="botanical-divider" aria-hidden="true"></div></div>
+      <div class="favourite-grid">{favourites.map((favourite, index) => <article class:list={["favourite-card", { reverse: index === 1 }]}><div class="favourite-image"><img src={favourite.image} alt={favourite.name} loading="lazy" /></div><div class="favourite-copy">{favourite.badge && <span class="badge">{favourite.badge}</span>}<h3>{favourite.name}</h3><p class="eyebrow">{favourite.category} <i>•</i> {favourite.area}</p><p>{favourite.description}</p></div></article>)}</div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .guide{width:min(100% - 40px,1072px);margin:0 auto;padding:76px 0 128px}.hero{text-align:center;max-width:680px;margin:0 auto 104px}.hero h1,.guide h2,.guide h3{font-family:"Bodoni Moda",serif;color:var(--green)}.hero h1{font-size:clamp(3.5rem,7.3vw,5.6rem);line-height:.95;letter-spacing:-.045em;margin:0 0 20px}.hero>p{font-size:1.12rem;line-height:1.55;color:var(--muted);margin:0}.botanical-divider{width:120px;height:24px;margin:28px auto 0;background:url("data:image/svg+xml,%3Csvg width='120' height='24' viewBox='0 0 120 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 12C50 12 40 4 30 4C20 4 10 12 0 12' stroke='%23E6D4B8' stroke-width='1.5'/%3E%3Cpath d='M60 12C70 12 80 20 90 20C100 20 110 12 120 12' stroke='%23E6D4B8' stroke-width='1.5'/%3E%3Ccircle cx='60' cy='12' r='3' fill='%23E6D4B8'/%3E%3C/svg%3E") center/contain no-repeat}.arrival{display:grid;grid-template-columns:5fr 7fr;gap:24px;align-items:stretch;margin-bottom:116px}.arrival-copy{display:flex;flex-direction:column;justify-content:center;min-height:360px;background:#fff;padding:48px 40px;border:1px solid #e6d4b84d;box-shadow:0 10px 40px #0f5f4c0d}.title-with-icon{display:flex;align-items:center;gap:10px;margin-bottom:23px}.title-with-icon span{font-size:1.2rem;color:var(--green)}.guide h2{font-size:clamp(2.2rem,4.5vw,3.15rem);font-weight:500;line-height:1;margin:0}.arrival-copy>p,.stay-card>p,.favourite-copy>p{color:var(--muted);font-size:.95rem;line-height:1.55;margin:0}.arrival-detail{display:flex;gap:13px;margin-top:28px}.arrival-detail>span{font-size:.9rem;color:#72594f;padding-top:3px}.arrival-detail h3{font:700 .67rem/1 "Hanken Grotesk",sans-serif;text-transform:uppercase;letter-spacing:.11em;margin:0 0 5px}.arrival-detail p{color:var(--muted);font-size:.87rem;line-height:1.45;margin:0}.arrival-image{min-height:360px;overflow:hidden}.arrival-image img,.stay-image img,.favourite-image img{display:block;width:100%;height:100%;object-fit:cover}.section-heading{display:flex;align-items:end;justify-content:space-between;margin-bottom:42px}.section-heading span{display:block;width:60px;height:1px;margin-bottom:8px;background:var(--gold)}.stay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}.stay-card:nth-child(2){margin-top:48px}.stay-image{aspect-ratio:3/4;overflow:hidden;margin-bottom:21px}.stay-card h3,.favourite-copy h3{font-size:2rem;font-weight:500;line-height:1.02;margin:0 0 8px}.eyebrow{font-weight:700!important;font-size:.64rem!important;line-height:1.3!important;letter-spacing:.11em;text-transform:uppercase;color:#72594f!important;margin:0 0 14px!important}.eyebrow i{font-style:normal;color:var(--gold);padding:0 2px}.favourites{position:relative;margin-top:158px;padding:112px 0 128px}.favourites::before{content:"";position:absolute;inset:0 -80px;background:var(--paper-deep);border-radius:8px;transform:rotate(-1deg);z-index:-1}.favourites-intro{text-align:center;margin-bottom:55px}.favourites-intro>p{color:var(--muted);font-size:.95rem;margin:12px 0 0}.favourite-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px}.favourite-card{display:flex;align-items:center;gap:24px;padding:24px;background:#fff;border:1px solid #e6d4b833;box-shadow:0 10px 40px #0f5f4c0d}.favourite-card.reverse{flex-direction:row-reverse;text-align:right}.favourite-image{width:46%;flex:0 0 46%;aspect-ratio:1;overflow:hidden}.favourite-copy{flex:1}.badge{display:inline-block;color:#72594f;background:var(--gold);border-radius:999px;padding:4px 10px;margin-bottom:11px;font-size:.56rem;line-height:1;font-weight:700;letter-spacing:.1em;text-transform:uppercase}.favourite-copy h3{font-size:1.8rem}.favourite-copy .eyebrow{display:inline-block;padding-bottom:7px;border-bottom:1px solid var(--gold)}@media (hover:hover){.stay-image img,.favourite-image img{transition:transform .7s ease}.stay-card:hover img,.favourite-card:hover img{transform:scale(1.04)}.favourite-card{transition:transform .25s ease,box-shadow .25s ease}.favourite-card:hover{transform:translateY(-4px);box-shadow:0 20px 50px #0f5f4c14}}@media(max-width:760px){.guide{width:min(100% - 40px,560px);padding:55px 0 70px}.hero{margin-bottom:64px}.hero h1{font-size:3.7rem}.hero>p{font-size:1rem}.arrival{grid-template-columns:1fr;margin-bottom:75px}.arrival-copy{min-height:auto;padding:34px 28px}.arrival-image{min-height:265px}.section-heading{margin-bottom:30px}.stay-grid{grid-template-columns:1fr;gap:44px}.stay-card:nth-child(2){margin-top:0}.stay-image{aspect-ratio:4/3}.favourites{margin-top:90px;padding:76px 0}.favourites::before{inset:0 -20px}.favourite-grid{grid-template-columns:1fr;gap:20px}.favourite-card,.favourite-card.reverse{flex-direction:row;text-align:left}.favourite-copy h3{font-size:1.6rem}}@media(max-width:430px){.guide{width:min(100% - 32px,560px)}.hero h1{font-size:3.25rem}.favourite-card,.favourite-card.reverse{display:block}.favourite-image{width:100%;margin-bottom:20px;aspect-ratio:16/9}}
+</style>
