@@ -1,3 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poiret+One&family=Source+Serif+4:opsz,wght@8..60,400..700&display=swap');
+@import "@fontsource/montserrat/latin-500.css";
+@import "@fontsource/montserrat/latin-600.css";
+@import "@fontsource/montserrat/latin-700.css";
+@import "@fontsource/poiret-one/latin-400.css";
+@import "@fontsource/source-serif-4/latin-400.css";
+@import "@fontsource/source-serif-4/latin-500.css";
+@import "@fontsource/source-serif-4/latin-600.css";
+@import "@fontsource/source-serif-4/latin-700.css";
 
 :root{color-scheme:light;--font-headline:"Poiret One",sans-serif;--font-body:"Source Serif 4",serif;--font-label:"Montserrat",sans-serif;--paper:#f7faf7;--paper-deep:#eef1ed;--ink:#191c1b;--muted:#52605b;--green:#004636;--green-soft:#0f5f4c;--peach:#fedbce;--gold:#e6d4b8;--rose:#741a33;--line:#d5ddd8;--bg-canvas:var(--paper);--bg-panel:#fff;--bg-card:#fff;--text-primary:var(--ink);--text-muted:var(--muted);--border-subtle:var(--line);--border-panel:var(--line);--border-content:var(--line);--action-primary:var(--green);--action-primary-soft:#e7f0ea;--action-secondary:#005140;--text-on-accent:#fff;--text-on-accent-muted:#dce8e2;--nav-pill-bg:transparent;--nav-pill-border-hover:var(--green);--interactive-border-hover:var(--green);--interactive-shadow-hover:0 16px 36px #00463616;--surface-shadow:0 24px 60px #0046360d;--focus-ring:#8dd5bc}.panel{background:var(--bg-panel);border:1px solid var(--border-panel);box-shadow:var(--surface-shadow)}label,legend,button,.kicker,.eyebrow,.badge,.event-label,.rsvp-eyebrow,.admin-eyebrow,time,.venue-note strong,.venue-note a{font-family:var(--font-label)}
