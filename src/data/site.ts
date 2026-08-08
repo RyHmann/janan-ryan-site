@@ -22,11 +22,7 @@ export const quickLinks = [
 		label: 'Wedding Details',
 		description: 'Ceremony timing, venue notes, and the key details guests will need.',
 	},
-	{
-		href: '/where-to-stay',
-		label: 'Where to Stay',
-		description: 'Shortlist of practical places to base yourself while in Wellington.',
-	},
+	{ href: '/rsvp', label: 'RSVP', description: 'Your personal invitation link is ready when you are.' },
 ];
 
 export const quickFacts = [
