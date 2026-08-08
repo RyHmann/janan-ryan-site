@@ -1,12 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
-const images = { hero: 'https://wellingtonnz.bynder.com/transform/a2babfe9-9456-4806-a2d6-629f381f00fd/Cable-Car-02' };
+const images = {
+  hero: 'https://wellingtonnz.bynder.com/transform/a2babfe9-9456-4806-a2d6-629f381f00fd/Cable-Car-02',
+  weekend: 'https://images.squarespace-cdn.com/content/v1/634f5a7ad2fd55601804931a/ae12fe67-8d34-428d-8e1a-99f98d041e72/wellington-city-night-time.jpg',
+};
 ---
 <Layout title="Janan & Ryan | Wellington wedding" description="Everything you need for Janan and Ryan’s Wellington wedding.">
 <section class="hero"><img src={images.hero} alt="Wellington Cable Car" /><div class="hero-overlay"><h1>Janan <span>&</span> Ryan</h1><p>Wellington, New Zealand</p></div></section>
 <section class="intro"><p class="kicker">Save the date</p><h2>Come celebrate with us in Wellington.</h2><p>We’re so excited to welcome our favourite people to our corner of the world. Here’s everything you’ll need for a joyful weekend together.</p><div class="divider">✦</div></section>
-<section class="split"><div><p class="kicker">The weekend</p><h2>Good people, good food, and a little Wellington weather.</h2><p>Find the practical details for the day, then explore our favourite ways to spend time in the city.</p><a href={`${base}wedding-details`}>Explore the details <span>→</span></a></div><img src={images.hero} alt="Wellington Cable Car" /></section>
+<section class="split"><div><p class="kicker">The weekend</p><h2>Good people, good food, and a little Wellington weather.</h2><p>Find the practical details for the day, then explore our favourite ways to spend time in the city.</p><a href={`${base}wedding-details`}>Explore the details <span>→</span></a></div><img src={images.weekend} alt="Wellington city at night" /></section>
 <section class="links"><a href={`${base}wellington-guide`}><span>01</span><h3>Travel guide</h3><p>Getting here, staying well, and seeing Wellington.</p></a><a href={`${base}wedding-details`}><span>02</span><h3>Wedding details</h3><p>Times, places, and the essentials for the day.</p></a><a href={`${base}rsvp`}><span>03</span><h3>RSVP</h3><p>Your personal invitation link is ready when you are.</p></a></section>
 </Layout>
 <style>
