@@ -15,4 +15,4 @@ favourites:
     imageAlt: The bright interior of Customs coffee shop
 ---
 
-<!-- Add or remove favourite places above. Each entry is displayed as a card automatically. -->
+<!-- Add future Wellington, regional, and New Zealand visitor recommendations here. -->

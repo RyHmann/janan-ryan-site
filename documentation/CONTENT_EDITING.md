@@ -11,7 +11,7 @@ HTML, or page routing.
 | Page | Editable file | Editable content |
 | --- | --- | --- |
 | Wedding Details | `src/content/wedding-details.md` | Ceremony, reception, map links, and timeline entries |
-| Wellington Guide | `src/content/wellington-guide.md` | Every card in **Our Favorites** |
+| Visitors Guide | `src/content/visitors-guide.md` | Every card in **Our Favorites** |
 
 These files use YAML frontmatter: the section between the opening and closing `---` lines. The
 comment below that section is only a reminder and does not appear on the public website.

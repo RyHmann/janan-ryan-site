@@ -2,19 +2,20 @@ export const navLinks = [
 	{ href: '/', label: 'Home' },
 	{ href: '/wedding-details', label: 'Wedding Details' },
 	{ href: '/wellington-guide', label: 'Travel' },
+	{ href: '/visitors-guide', label: 'Visitors Guide' },
 	{ href: '/rsvp', label: 'RSVP' },
 ];
 
 export const quickLinks = [
 	{
-		href: '/before-you-travel',
-		label: 'Before You Travel',
-		description: 'Passports, transit expectations, and what to pack before takeoff.',
+		href: '/wellington-guide',
+		label: 'Travel',
+		description: 'Visas, airport connections, and places to stay in Wellington.',
 	},
 	{
-		href: '/wellington-guide',
-		label: 'Wellington Guide',
-		description: 'Neighbourhoods, coffee, weather, and how the city feels day to day.',
+		href: '/visitors-guide',
+		label: 'Visitors Guide',
+		description: 'Our favourite places to eat, drink, and explore around Wellington.',
 	},
 	{
 		href: '/wedding-details',

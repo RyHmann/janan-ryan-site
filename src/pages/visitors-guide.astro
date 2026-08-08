@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const [content] = await getCollection('visitorsGuide');
+if (!content) throw new Error('Visitors guide content entry is missing.');
+const { favourites } = content.data;
+---
+<Layout title="Visitors Guide | Janan & Ryan" description="Our favourite places to eat, drink, and explore in Wellington.">
+  <div class="guide">
+    <header class="hero">
+      <h1>Visitors Guide</h1>
+      <p>Our favourite ways to eat, drink, and wander in the city we call home.</p>
+      <div class="botanical-divider" aria-hidden="true"></div>
+    </header>
+    <section class="favourites" aria-labelledby="favourites-heading">
+      <div class="favourites-intro"><h2 id="favourites-heading">Our Favorites</h2><p>Where to eat, drink, and wander.</p><div class="botanical-divider" aria-hidden="true"></div></div>
+      <div class="favourite-grid">{favourites.map((favourite, index) => <article class:list={["favourite-card", { reverse: index % 2 === 1 }]}><div class="favourite-image"><img src={favourite.image} alt={favourite.imageAlt} loading="lazy" /></div><div class="favourite-copy">{favourite.badge && <span class="badge">{favourite.badge}</span>}<h3>{favourite.name}</h3><p class="eyebrow">{favourite.category} <i>•</i> {favourite.area}</p><p>{favourite.description}</p></div></article>)}</div>
+    </section>
+  </div>
+</Layout>
+<style>
+  .guide{width:min(100% - 40px,1072px);margin:0 auto;padding:76px 0 128px}.hero{text-align:center;max-width:680px;margin:0 auto 104px}.hero h1,.guide h2,.guide h3{font-family:var(--font-headline);color:var(--green)}.hero h1{font-size:clamp(3.5rem,7.3vw,5.6rem);line-height:.95;letter-spacing:-.045em;margin:0 0 20px}.hero>p{font-size:1.12rem;line-height:1.55;color:var(--muted);margin:0}.botanical-divider{width:120px;height:24px;margin:28px auto 0;background:url("data:image/svg+xml,%3Csvg width='120' height='24' viewBox='0 0 120 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 12C50 12 40 4 30 4C20 4 10 12 0 12' stroke='%23E6D4B8' stroke-width='1.5'/%3E%3Cpath d='M60 12C70 12 80 20 90 20C100 20 110 12 120 12' stroke='%23E6D4B8' stroke-width='1.5'/%3E%3Ccircle cx='60' cy='12' r='3' fill='%23E6D4B8'/%3E%3C/svg%3E") center/contain no-repeat}.favourites{position:relative;padding:112px 0 128px}.favourites::before{content:"";position:absolute;inset:0 -80px;background:var(--paper-deep);border-radius:8px;transform:rotate(-1deg);z-index:-1}.favourites-intro{text-align:center;margin-bottom:55px}.favourites-intro>p{color:var(--muted);font-size:.95rem;margin:12px 0 0}.favourite-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px}.favourite-card{display:flex;align-items:center;gap:24px;padding:24px;background:#fff;border:1px solid #e6d4b833;box-shadow:0 10px 40px #0f5f4c0d}.favourite-card.reverse{flex-direction:row-reverse;text-align:right}.favourite-image{width:46%;flex:0 0 46%;aspect-ratio:1;overflow:hidden}.favourite-image img{display:block;width:100%;height:100%;object-fit:cover}.favourite-copy{flex:1}.badge{display:inline-block;color:#72594f;background:var(--gold);border-radius:999px;padding:4px 10px;margin-bottom:11px;font-size:.56rem;line-height:1;font-weight:700;letter-spacing:.1em;text-transform:uppercase}.favourite-copy h3{font-size:1.8rem;font-weight:500;line-height:1.02;margin:0 0 8px}.favourite-copy>p{color:var(--muted);font-size:.95rem;line-height:1.55;margin:0}.eyebrow{font-weight:700!important;font-size:.64rem!important;line-height:1.3!important;letter-spacing:.11em;text-transform:uppercase;color:#72594f!important;margin:0 0 14px!important}.eyebrow i{font-style:normal;color:var(--gold);padding:0 2px}.favourite-copy .eyebrow{display:inline-block;padding-bottom:7px;border-bottom:1px solid var(--gold)}@media (hover:hover){.favourite-image img{transition:transform .7s ease}.favourite-card:hover img{transform:scale(1.04)}.favourite-card{transition:transform .25s ease,box-shadow .25s ease}.favourite-card:hover{transform:translateY(-4px);box-shadow:0 20px 50px #0f5f4c14}}@media(max-width:760px){.guide{width:min(100% - 40px,560px);padding:55px 0 70px}.hero{margin-bottom:64px}.hero h1{font-size:3.7rem}.hero>p{font-size:1rem}.favourites{padding:76px 0}.favourites::before{inset:0 -20px}.favourite-grid{grid-template-columns:1fr;gap:20px}.favourite-card,.favourite-card.reverse{flex-direction:row;text-align:left}.favourite-copy h3{font-size:1.6rem}}@media(max-width:430px){.guide{width:min(100% - 32px,560px)}.hero h1{font-size:3.25rem}.favourite-card,.favourite-card.reverse{display:block}.favourite-image{width:100%;margin-bottom:20px;aspect-ratio:16/9}}
+</style>

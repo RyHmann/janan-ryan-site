@@ -28,8 +28,8 @@ const weddingDetails = defineCollection({
   }),
 });
 
-const wellingtonGuide = defineCollection({
-  loader: glob({ pattern: 'wellington-guide.md', base: './src/content' }),
+const visitorsGuide = defineCollection({
+  loader: glob({ pattern: 'visitors-guide.md', base: './src/content' }),
   schema: z.object({
     favourites: z.array(z.object({
       name: z.string(),
@@ -43,4 +43,4 @@ const wellingtonGuide = defineCollection({
   }),
 });
 
-export const collections = { weddingDetails, wellingtonGuide };
+export const collections = { weddingDetails, visitorsGuide };
