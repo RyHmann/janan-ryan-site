@@ -144,11 +144,11 @@ const stays = [
           <article>
             <h4>The Oaks Hotel</h4><p>
               Discount code: <DiscountCode codeKey="OAKS_DISCOUNT_CODE" />
-            </p>
+            </p><small>Valid for stays from 12–26 February 2027.</small><a class="book-link" href="https://www.oakshotels.com/en/oaks-wellington-hotel" target="_blank" rel="noreferrer">Click to book <span aria-hidden="true">↗</span></a>
           </article><article>
             <h4>TRYP Wellington</h4><p>
               Discount code: <DiscountCode codeKey="TRYP_DISCOUNT_CODE" />
-            </p>
+            </p><small>Valid for stays from 17–21 February 2027.</small><a class="book-link" href="https://trypwellington.co.nz/" target="_blank" rel="noreferrer">Click to book <span aria-hidden="true">↗</span></a>
           </article>
         </div>
       </div>
@@ -365,6 +365,19 @@ const stays = [
   }
   .offer-cards em {
     font-size: 0.84rem;
+  }
+  .offer-cards .book-link {
+    display: inline-block;
+    margin-top: 13px;
+    color: var(--green);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .offer-cards .book-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
   }
   .eyebrow {
     font-weight: 700 !important;
