@@ -5,6 +5,15 @@ import { getCollection } from "astro:content";
 const [content] = await getCollection("visitorsGuide");
 if (!content) throw new Error("Visitors guide content entry is missing.");
 const { favourites } = content.data;
+const categoryGroups = favourites.reduce<{ category: string; items: typeof favourites }[]>(
+  (groups, favourite) => {
+    const group = groups.find((entry) => entry.category === favourite.category);
+    if (group) group.items.push(favourite);
+    else groups.push({ category: favourite.category, items: [favourite] });
+    return groups;
+  },
+  [],
+);
 ---
 
 <Layout
@@ -27,13 +36,15 @@ const { favourites } = content.data;
           Where to eat, drink, and wander.
         </p>
       </div>
-      <div class="favourite-grid">
-        {
-          favourites.map((favourite, index) => (
-            <article
-              class:list={["favourite-card", { reverse: index % 2 === 1 }]}
-            >
-              <>
+      {
+        categoryGroups.map((group) => (
+          <section class="category-section" aria-labelledby={`category-${group.category}`}>
+            <h2 id={`category-${group.category}`} class="category-heading">{group.category}</h2>
+            <div class="favourite-grid">
+              {group.items.map((favourite, index) => (
+                <article
+                  class:list={["favourite-card", { reverse: index % 2 === 1 }]}
+                >
                 <div class="favourite-image">
                   <img
                     src={favourite.image}
@@ -53,11 +64,12 @@ const { favourites } = content.data;
                     <p>{favourite.description}</p>
                   </>
                 </div>
-              </>
-            </article>
-          ))
-        }
-      </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        ))
+      }
     </section>
   </div>
 </Layout>
@@ -92,16 +104,7 @@ const { favourites } = content.data;
   }
   .favourites {
     position: relative;
-    padding: 112px 0 128px;
-  }
-  .favourites::before {
-    content: "";
-    position: absolute;
-    inset: 0 -80px;
-    background: var(--paper-deep);
-    border-radius: 8px;
-    transform: rotate(-1deg);
-    z-index: -1;
+    padding: 0 0 128px;
   }
   .favourites-intro {
     text-align: center;
@@ -116,6 +119,31 @@ const { favourites } = content.data;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
+  }
+  .category-section {
+    position: relative;
+    padding: 76px 40px 84px;
+    margin: 0 0 64px;
+  }
+  .category-section::before {
+    content: "";
+    position: absolute;
+    inset: 0 -80px;
+    background: var(--paper-deep);
+    border-radius: 8px;
+    transform: rotate(-1deg);
+    z-index: -1;
+  }
+  .category-section:nth-child(even)::before {
+    background: #faf7eb;
+    transform: rotate(1deg);
+  }
+  .category-heading {
+    margin: 0 0 42px;
+    font-size: 2.2rem;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
   }
   .favourite-card {
     display: flex;
@@ -221,14 +249,20 @@ const { favourites } = content.data;
       font-size: 1rem;
     }
     .favourites {
-      padding: 76px 0;
+      padding: 0 0 76px;
     }
-    .favourites::before {
+    .category-section {
+      padding: 58px 20px 64px;
+    }
+    .category-section::before {
       inset: 0 -20px;
     }
     .favourite-grid {
       grid-template-columns: 1fr;
       gap: 20px;
+    }
+    .category-heading {
+      margin-bottom: 32px;
     }
     .favourite-card,
     .favourite-card.reverse {
