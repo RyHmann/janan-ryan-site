@@ -7,4 +7,111 @@
 @import "@fontsource/source-serif-4/latin-600.css";
 @import "@fontsource/source-serif-4/latin-700.css";
 
-:root{color-scheme:light;--font-headline:"Poiret One",sans-serif;--font-body:"Source Serif 4",serif;--font-label:"Montserrat",sans-serif;--paper:#f7faf7;--paper-deep:#eef1ed;--ink:#191c1b;--muted:#52605b;--green:#004636;--green-soft:#0f5f4c;--peach:#fedbce;--gold:#e6d4b8;--rose:#741a33;--line:#d5ddd8;--bg-canvas:var(--paper);--bg-panel:#fff;--bg-card:#fff;--text-primary:var(--ink);--text-muted:var(--muted);--border-subtle:var(--line);--border-panel:var(--line);--border-content:var(--line);--action-primary:var(--green);--action-primary-soft:#e7f0ea;--action-secondary:#005140;--text-on-accent:#fff;--text-on-accent-muted:#dce8e2;--nav-pill-bg:transparent;--nav-pill-border-hover:var(--green);--interactive-border-hover:var(--green);--interactive-shadow-hover:0 16px 36px #00463616;--surface-shadow:0 24px 60px #0046360d;--focus-ring:#8dd5bc}.panel{background:var(--bg-panel);border:1px solid var(--border-panel);box-shadow:var(--surface-shadow)}label,legend,button,.kicker,.eyebrow,.badge,.event-label,.rsvp-eyebrow,.admin-eyebrow,time,.venue-note strong,.venue-note a{font-family:var(--font-label)}
+:root {
+  color-scheme: light;
+  --font-headline: "Poiret One", sans-serif;
+  --font-body: "Source Serif 4", serif;
+  --font-label: "Montserrat", sans-serif;
+  --paper: #f7faf7;
+  --paper-deep: #eef1ed;
+  --ink: #191c1b;
+  --muted: #52605b;
+  --green: #004636;
+  --green-soft: #0f5f4c;
+  --peach: #fedbce;
+  --gold: #e6d4b8;
+  --rose: #741a33;
+  --line: #d5ddd8;
+  --bg-canvas: var(--paper);
+  --bg-panel: #fff;
+  --bg-card: #fff;
+  --text-primary: var(--ink);
+  --text-muted: var(--muted);
+  --border-subtle: var(--line);
+  --border-panel: var(--line);
+  --border-content: var(--line);
+  --action-primary: var(--green);
+  --action-primary-soft: #e7f0ea;
+  --action-secondary: #005140;
+  --text-on-accent: #fff;
+  --text-on-accent-muted: #dce8e2;
+  --nav-pill-bg: transparent;
+  --nav-pill-border-hover: var(--green);
+  --interactive-border-hover: var(--green);
+  --interactive-shadow-hover: 0 16px 36px #00463616;
+  --surface-shadow: 0 24px 60px #0046360d;
+  --focus-ring: #8dd5bc
+}
+
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-panel);
+  box-shadow: var(--surface-shadow)
+}
+
+label,
+legend,
+button,
+.kicker,
+.eyebrow,
+.badge,
+.event-label,
+.rsvp-eyebrow,
+.admin-eyebrow,
+time,
+.venue-note strong,
+.venue-note a {
+  font-family: var(--font-label)
+}
+
+.botanical-divider {
+  --moth-size: 75px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: min(520px, 100%);
+  height: var(--moth-size);
+  margin: 28px auto 0;
+  color: var(--gold);
+}
+
+.botanical-divider>i {
+  position: relative;
+  display: block;
+  flex: 1;
+  height: 32px;
+  background: linear-gradient(currentColor 0 0) left center / 100% 1.5px no-repeat;
+}
+
+.botanical-divider>i::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border: 1px solid currentColor;
+  background: currentColor;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.botanical-divider>i:first-child {
+  background-position: right center, right calc(50% - 9px), right calc(50% + 9px);
+}
+
+.botanical-divider>i:first-child::after {
+  left: 0;
+}
+
+.botanical-divider>i:last-child::after {
+  right: 0;
+}
+
+.botanical-divider>span {
+  width: var(--moth-size);
+  height: var(--moth-size);
+  flex: 0 0 var(--moth-size);
+  background: var(--green);
+  filter: drop-shadow(0 0 1px var(--green));
+  -webkit-mask: url("/icons/moth.svg") center / contain no-repeat;
+  mask: url("/icons/moth.svg") center / contain no-repeat;
+}
