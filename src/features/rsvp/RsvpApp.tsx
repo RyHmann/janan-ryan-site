@@ -35,19 +35,17 @@ function asAnswer(value: AttendanceStatus | null): Answer | null {
 
 function AttendanceChoice({
 	guestId,
-	part,
 	value,
 	onChange,
 }: {
 	guestId: string;
-	part: 'ceremony' | 'reception';
 	value: Answer | null;
 	onChange: (value: Answer) => void;
 }) {
-	const name = `${guestId}-${part}`;
+	const name = `${guestId}-attendance`;
 	return (
 		<fieldset className="rsvp-attendance">
-			<legend>{part === 'ceremony' ? 'Ceremony' : 'Reception'}</legend>
+			<legend>Attendance</legend>
 			<div className="rsvp-choice-row">
 				<label>
 					<input
@@ -117,11 +115,12 @@ export default function RsvpApp({ accessError }: Props) {
 		);
 	}
 
-	function setAttendance(guestId: string, part: 'ceremony' | 'reception', value: Answer) {
+	function setAttendance(guestId: string, value: Answer) {
 		updateGuest(guestId, (guest) => ({
 			...guest,
-			[part === 'ceremony' ? 'ceremonyStatus' : 'receptionStatus']: value,
-			...(part === 'reception' && value === 'declined'
+			ceremonyStatus: isApplicable(guest, 'ceremony') ? value : null,
+			receptionStatus: isApplicable(guest, 'reception') ? value : null,
+			...(value === 'declined'
 				? { dietaryRequirements: [], dietaryOther: '' }
 				: {}),
 		}));
@@ -147,12 +146,9 @@ export default function RsvpApp({ accessError }: Props) {
 		setError(null);
 
 		for (const guest of household.guests) {
-			if (isApplicable(guest, 'ceremony') && !asAnswer(guest.ceremonyStatus)) {
-				setError(`Please answer the ceremony invitation for ${guest.fullName}.`);
-				return;
-			}
-			if (isApplicable(guest, 'reception') && !asAnswer(guest.receptionStatus)) {
-				setError(`Please answer the reception invitation for ${guest.fullName}.`);
+			const attendance = isApplicable(guest, 'reception') ? guest.receptionStatus : guest.ceremonyStatus;
+			if (!asAnswer(attendance)) {
+				setError(`Please tell us whether ${guest.fullName} will be attending.`);
 				return;
 			}
 			if (guest.dietaryRequirements.includes('other') && !guest.dietaryOther.trim()) {
@@ -164,10 +160,10 @@ export default function RsvpApp({ accessError }: Props) {
 		const submission: HouseholdRsvpSubmission = {
 			responses: household.guests.map((guest) => ({
 				guestId: guest.id,
-				ceremonyStatus: isApplicable(guest, 'ceremony') ? asAnswer(guest.ceremonyStatus) : null,
-				receptionStatus: isApplicable(guest, 'reception') ? asAnswer(guest.receptionStatus) : null,
-				dietaryRequirements: guest.receptionStatus === 'attending' ? guest.dietaryRequirements : [],
-				dietaryOther: guest.receptionStatus === 'attending' ? guest.dietaryOther : '',
+				ceremonyStatus: isApplicable(guest, 'ceremony') ? asAnswer(guest.ceremonyStatus ?? guest.receptionStatus) : null,
+				receptionStatus: isApplicable(guest, 'reception') ? asAnswer(guest.receptionStatus ?? guest.ceremonyStatus) : null,
+				dietaryRequirements: guest.receptionStatus === 'attending' || guest.ceremonyStatus === 'attending' ? guest.dietaryRequirements : [],
+				dietaryOther: guest.receptionStatus === 'attending' || guest.ceremonyStatus === 'attending' ? guest.dietaryOther : '',
 			})),
 			additionalComments: household.additionalComments,
 		};
@@ -239,20 +235,11 @@ export default function RsvpApp({ accessError }: Props) {
 								<span>{guest.rsvpFor === 'both' ? 'Ceremony & reception' : guest.rsvpFor}</span>
 							</div>
 							<div className="rsvp-event-grid">
-								{isApplicable(guest, 'ceremony') && (
+								{(isApplicable(guest, 'ceremony') || isApplicable(guest, 'reception')) && (
 									<AttendanceChoice
 										guestId={guest.id}
-										part="ceremony"
-										value={asAnswer(guest.ceremonyStatus)}
-										onChange={(value) => setAttendance(guest.id, 'ceremony', value)}
-									/>
-								)}
-								{isApplicable(guest, 'reception') && (
-									<AttendanceChoice
-										guestId={guest.id}
-										part="reception"
-										value={asAnswer(guest.receptionStatus)}
-										onChange={(value) => setAttendance(guest.id, 'reception', value)}
+										value={asAnswer(guest.receptionStatus ?? guest.ceremonyStatus)}
+										onChange={(value) => setAttendance(guest.id, value)}
 									/>
 								)}
 							</div>
