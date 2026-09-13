@@ -44,18 +44,6 @@ favourites:
     description: Fresh, rustic Greek food built around sharing plates, warm service and family-style dining. Try the sesame-crusted feta.
     image: https://wellingtonnz.bynder.com/transform/23ed464f-aeae-4c3c-af89-f7224dc65f11/Oikos-01?io=transform%3Afill%2Cwidth%3A900%2Cheight%3A560&quality=80
     imageAlt: Colourful salad from Oikos Hellenic Cuisine
-  - name: Fred’s
-    category: Food & drink
-    area: Cuba Street
-    description: A daytime stop for big, excellent sandwiches, toasties and coffee while exploring one of Wellington’s best streets for food and people-watching.
-    image: https://neatplaces.co.nz/cdn-cgi/image/format=auto,fit=cover,height=560,width=900//media/uploads/places/place/freds/Interior_view_of_Freds_with_customers_dining_at_a_table.jpg
-    imageAlt: Diners inside Fred’s sandwich shop on Cuba Street
-  - name: Mr Go’s
-    category: Food & drink
-    area: Hannahs Laneway
-    description: Colourful pan-Asian share plates, bao, dumplings and cocktails, with a little pre-wedding lore attached.
-    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Colourful pan-Asian dishes for sharing
   - name: Völco
     category: Coffee
     area: Wellington
@@ -78,8 +66,8 @@ favourites:
     category: Drinks
     area: Wellington
     description: Our Tuesday pub-quiz home, with great food, beers and wonderful staff. Friendly competition encouraged.
-    image: "https://images.unsplash.com/photo-1515003197210-e0c7c8647815?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Pints of beer at a lively pub
+    image: https://lh3.googleusercontent.com/gps-cs-s/AHRPTWms0SFxlGltfXtvasb-KVOwH4ArV-rSRwasmuO_oAUkoFs6D_cab0XaXHRtUGTSpfXKBBZWTougC2FK6SHlS3kYE1K0ZdoH1om-Z5YD3y0PFFy1gbIH2UdfBFfP5vwJCHFwN2xp8GHyicHg=s680-w680-h510
+    imageAlt: Three Sisters pub in Wellington
   - name: Mean Doses
     category: Drinks
     area: Tory Street
@@ -98,12 +86,6 @@ favourites:
     description: A subterranean whisky bar that is low-lit and cosy. Best for a quiet weeknight, before the weekends get rammed.
     image: https://wellingtonnz.bynder.com/transform/698c4553-83bd-447a-9812-81ec2b63c1e3/Dee-s-Place-33?io=transform%3Afill%2Cwidth%3A900%2Cheight%3A560&quality=80
     imageAlt: Cocktails lined up on the bar at Dee’s Place
-  - name: Hawthorn Lounge
-    category: Drinks
-    area: Wellington
-    description: A classic intimate cocktail bar for a slower drink, especially if you like bartenders who know what they’re doing.
-    image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Classic cocktails at an intimate bar
   - name: Ortega Fish Shack
     category: MICHELIN-recognised
     area: Wellington
@@ -115,20 +97,14 @@ favourites:
     category: MICHELIN-recognised
     area: Wellington
     description: "Where we had our second date. Go for the “Just feed me” nine-course menu: filling, delicious and great value."
-    image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Carefully plated modern Japanese dish
+    image: https://kojirestaurant.co.nz/wp-content/uploads/2022/02/koji-gallery-2022-3-1.jpg
+    imageAlt: Interior of Koji restaurant
   - name: Graze
     category: MICHELIN-recognised
     area: Wellington
     description: A thoughtful, fish-forward restaurant with a seasonal approach and a focus on local ingredients.
     image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=900&q=85"
     imageAlt: Seasonal fish dish with fresh vegetables
-  - name: Margot
-    category: MICHELIN-recognised
-    area: Newtown
-    description: A stylish city restaurant with a European-leaning menu, good drinks and a grown-up date-night feel.
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Stylish restaurant interior
   - name: Kisa
     category: MICHELIN-recognised
     area: Cuba Street
@@ -189,12 +165,6 @@ favourites:
     description: A pretty town of boutiques, cafés, old villas and a gentler pace than the city. Pair it with Martinborough if you have a car.
     image: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=900&q=85"
     imageAlt: Charming small town street with trees
-  - name: Cape Palliser
-    category: Further afield
-    area: Wairarapa coast
-    description: Wild coast, lighthouse, fur seals and dramatic scenery. Treat it as a full-day drive and bring sensible shoes, snacks and a jacket.
-    image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Dramatic coastal landscape under open sky
   - name: Kāpiti Coast
     category: Further afield
     area: Kāpiti
@@ -213,12 +183,6 @@ favourites:
     description: A predator-free nature reserve and one of the best birdlife experiences near Wellington. Book well ahead and allow extra travel time.
     image: "https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=900&q=85"
     imageAlt: Native bird perched among green foliage
-  - name: Kaitoke Regional Park
-    category: Further afield
-    area: Upper Hutt
-    description: Native bush, river swimming spots, picnic areas and a Lord of the Rings filming connection as Rivendell. A car is recommended.
-    image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Lush native bush beside a clear river
   
 ---
 
