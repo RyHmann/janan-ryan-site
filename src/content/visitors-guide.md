@@ -30,8 +30,8 @@ favourites:
     category: Food & drink
     area: Courtenay Place
     description: A Wellington classic for fast, generous Chinese comfort food, a huge menu, late hours and loyal local following. Janan and Ryan’s go-to for a sneaky takeaway.
-    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Chinese dishes arranged on a restaurant table
+    image: https://wellingtonnz.bynder.com/transform/7ff21e65-f75a-4fe2-a813-89c46d9446f3/K-C-Cafe-Takeaway-2026-13?io=transform%3Afill%2Cwidth%3A900%2Cheight%3A560&quality=80
+    imageAlt: BBQ pork wonton noodle soup at KC Cafe
   - name: Tatsushi
     category: Food & drink
     area: Edward Street
@@ -42,14 +42,14 @@ favourites:
     category: Food & drink
     area: Miramar
     description: Fresh, rustic Greek food built around sharing plates, warm service and family-style dining. Try the sesame-crusted feta.
-    image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Shared Mediterranean dishes on a table
+    image: https://wellingtonnz.bynder.com/transform/23ed464f-aeae-4c3c-af89-f7224dc65f11/Oikos-01?io=transform%3Afill%2Cwidth%3A900%2Cheight%3A560&quality=80
+    imageAlt: Colourful salad from Oikos Hellenic Cuisine
   - name: Fred’s
     category: Food & drink
     area: Cuba Street
     description: A daytime stop for big, excellent sandwiches, toasties and coffee while exploring one of Wellington’s best streets for food and people-watching.
-    image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Fresh sandwich on a café table
+    image: https://neatplaces.co.nz/cdn-cgi/image/format=auto,fit=cover,height=560,width=900//media/uploads/places/place/freds/Interior_view_of_Freds_with_customers_dining_at_a_table.jpg
+    imageAlt: Diners inside Fred’s sandwich shop on Cuba Street
   - name: Mr Go’s
     category: Food & drink
     area: Hannahs Laneway
