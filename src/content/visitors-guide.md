@@ -5,14 +5,8 @@ favourites:
     area: Wellington
     badge: Award Winning Coffee
     description: A cozy neighbourhood gem known for its creative atmosphere, exceptional coffee, and freshly baked pastries. The perfect spot to sketch, read, or simply enjoy a quiet morning in the city.
-    image: https://lh3.googleusercontent.com/aida-public/AB6AXuDH85YPuUTeveS8pFUA5CJhLvF804iYBOO9P8P7K_41HbSuzvQDkXEhP40bDXlUcH8e8KEj57K-v6UQzTsfJFvX6ba2s1bpH6QJTr7e5j8ahuYpLOVFZYS0g5mea7qU_JLqdqEutuUVNdbtTTQafjXjxqFtUubxFhKivYtzyHc9WW4xorUu_B04BVRFbJztec59k_vPb8Y5WtIXcdgFKapf0sOsxPWk3WhGzntG3-Wnt3boJX2NBeGO6g
-    imageAlt: A plated seasonal dish at Sketchbook Cafe
-  - name: Customs
-    category: Coffee
-    area: Te Aro
-    description: The best filter coffee in the city, served alongside exceptional toast in a sun-drenched space. The perfect starting point for a Saturday morning stroll.
-    image: https://lh3.googleusercontent.com/aida-public/AB6AXuBv5UDuywXF4xsyjsoaqHP3WexjzXbhOXLAZe7B_VxQ85AeF0u6kTmeNJXGhdGhwU0kltavJMVhf1dNZwHhHKGufXX895ooKiHxpT0tL12nfw8tiGXNzevZdQR_KgH3DfieCr9t2Lq6btU1i2wgq_GMVAeCuGMaF50fvtVPFtNy9fiHRXb8Crv_Wvutw5FEVE0EGW9xA8lWPFKJ4BBjTjaV5Bft0lM3pCRrqsXVk5a72_hXJ1EHaP1Afg
-    imageAlt: The bright interior of Customs coffee shop
+    image: https://lh3.googleusercontent.com/gps-cs-s/AHRPTWms_m0z1J6pm9UZsgPx9H10CbosST_rQTzTXJi3kcW5JiRez82ZZ1PJtZ8VNulSvy1EwUO5h8ztVheBVC9aRWuvIOnjAtwvAaWCywUHljMdF4DyTX9RiSekClkD3OU6JaefbmNj6dV21gCp=s680-w680-h510
+    imageAlt: Sketchbook Cafe in Wellington
   - name: Double Vision Brewery
     category: Drinks
     area: Miramar & Island Bay
@@ -32,24 +26,12 @@ favourites:
     description: A Wellington classic for fast, generous Chinese comfort food, a huge menu, late hours and loyal local following. Janan and Ryan’s go-to for a sneaky takeaway.
     image: https://wellingtonnz.bynder.com/transform/7ff21e65-f75a-4fe2-a813-89c46d9446f3/K-C-Cafe-Takeaway-2026-13?io=transform%3Afill%2Cwidth%3A900%2Cheight%3A560&quality=80
     imageAlt: BBQ pork wonton noodle soup at KC Cafe
-  - name: Tatsushi
-    category: Food & drink
-    area: Edward Street
-    description: A small, tucked-away Japanese restaurant known for fresh sushi, sashimi, tempura and a traditional feel. A quieter dinner that still feels special.
-    image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Japanese sushi and sashimi platter
   - name: Oikos
     category: Food & drink
     area: Miramar
     description: Fresh, rustic Greek food built around sharing plates, warm service and family-style dining. Try the sesame-crusted feta.
     image: https://wellingtonnz.bynder.com/transform/23ed464f-aeae-4c3c-af89-f7224dc65f11/Oikos-01?io=transform%3Afill%2Cwidth%3A900%2Cheight%3A560&quality=80
     imageAlt: Colourful salad from Oikos Hellenic Cuisine
-  - name: Völco
-    category: Coffee
-    area: Wellington
-    description: "A bakery-café known for pastries, bread, sandwiches and very good coffee: simple, reliable and deliciously carb-forward."
-    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Fresh pastries and bread in a bakery
   - name: Neo Cafe
     category: Coffee
     area: Willis Street
@@ -80,19 +62,13 @@ favourites:
     description: Loud, tiny, friendly and fun. Ryan loves their spicy margaritas; ask for Phill’s homemade pickle juice.
     image: https://snappyhour.co.nz/img/locations/large/minibar_1.jpg
     imageAlt: The bar at Minibar on Courtenay Place
-  - name: Dee’s Place
-    category: Drinks
-    area: Cuba Street
-    description: A subterranean whisky bar that is low-lit and cosy. Best for a quiet weeknight, before the weekends get rammed.
-    image: https://wellingtonnz.bynder.com/transform/698c4553-83bd-447a-9812-81ec2b63c1e3/Dee-s-Place-33?io=transform%3Afill%2Cwidth%3A900%2Cheight%3A560&quality=80
-    imageAlt: Cocktails lined up on the bar at Dee’s Place
   - name: Ortega Fish Shack
     category: MICHELIN-recognised
     area: Wellington
     badge: Michelin Star
     description: A Wellington institution for seafood, excellent service and a lively-but-polished dinner that never feels stiff.
-    image: "https://images.unsplash.com/photo-1534080564583-6be75777b70a?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Refined seafood dish on a restaurant plate
+    image: https://www.ortega.co.nz/uploads/1/0/4/1/104146336/ortega-72_orig.jpg
+    imageAlt: Interior of Ortega Fish Shack
   - name: Koji
     category: MICHELIN-recognised
     area: Wellington
@@ -105,12 +81,6 @@ favourites:
     description: A thoughtful, fish-forward restaurant with a seasonal approach and a focus on local ingredients.
     image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=900&q=85"
     imageAlt: Seasonal fish dish with fresh vegetables
-  - name: Kisa
-    category: MICHELIN-recognised
-    area: Cuba Street
-    description: Warm, generous Middle Eastern and Turkish-inspired food with great flavours, made for sharing.
-    image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Middle Eastern dishes arranged for sharing
   - name: Te Papa Tongarewa
     category: Things to do
     area: Waterfront
@@ -141,18 +111,6 @@ favourites:
     description: Go for coffee, food, vintage shopping, bars and people-watching, then let the afternoon happen.
     image: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=900&q=85"
     imageAlt: Bustling urban street with cafés and shops
-  - name: Oriental Bay & the waterfront
-    category: Things to do
-    area: Waterfront
-    description: An easy clear-day walk with harbour views, boats, sculptures, cafés and Wellington’s city beach.
-    image: "https://images.unsplash.com/photo-1507520460027-1c3f9b5c4c7b?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Calm waterfront and city beach
-  - name: Matiu/Somes Island
-    category: Things to do
-    area: Wellington Harbour
-    description: Take the ferry to this harbour island for walking tracks, wildlife, history and great views back to Wellington.
-    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Island landscape viewed across water
   - name: Martinborough
     category: Further afield
     area: Wairarapa
@@ -177,12 +135,6 @@ favourites:
     description: A dramatic coastal walk with big views, swing bridges and plenty of stairs. Both ends are near train stations.
     image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85"
     imageAlt: Hiker on a dramatic coastal mountain track
-  - name: Kāpiti Island
-    category: Further afield
-    area: Kāpiti Coast
-    description: A predator-free nature reserve and one of the best birdlife experiences near Wellington. Book well ahead and allow extra travel time.
-    image: "https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Native bird perched among green foliage
   
 ---
 
