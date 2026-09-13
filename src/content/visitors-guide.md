@@ -84,20 +84,20 @@ favourites:
     category: Drinks
     area: Tory Street
     description: "A craft-beer taproom with arcade games, pinball, pool and shuffleboard: ideal for a relaxed group drink with something to do."
-    image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Craft beer and arcade games in a bar
+    image: https://images.squarespace-cdn.com/content/v1/64bf4839e1c44a61f84c1256/2045e848-34f6-4739-8269-03af1cd88ac0/20230630%2BMeanDoses-SoftLaunch%2B9266.jpeg
+    imageAlt: Inside the Mean Doses taproom on Tory Street
   - name: Minibar
     category: Drinks
     area: Wellington
     description: Loud, tiny, friendly and fun. Ryan loves their spicy margaritas; ask for Phill’s homemade pickle juice.
-    image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Colourful cocktail at a lively bar
+    image: https://snappyhour.co.nz/img/locations/large/minibar_1.jpg
+    imageAlt: The bar at Minibar on Courtenay Place
   - name: Dee’s Place
     category: Drinks
     area: Cuba Street
     description: A subterranean whisky bar that is low-lit and cosy. Best for a quiet weeknight, before the weekends get rammed.
-    image: "https://images.unsplash.com/photo-1527281400683-1aae777175f8?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Whisky glasses in a dimly lit bar
+    image: https://wellingtonnz.bynder.com/transform/698c4553-83bd-447a-9812-81ec2b63c1e3/Dee-s-Place-33?io=transform%3Afill%2Cwidth%3A900%2Cheight%3A560&quality=80
+    imageAlt: Cocktails lined up on the bar at Dee’s Place
   - name: Hawthorn Lounge
     category: Drinks
     area: Wellington
