@@ -11,8 +11,8 @@ favourites:
     category: Drinks
     area: Miramar & Island Bay
     description: One of our favourite places to have a great beer, some fries, and hang with friends. 
-    image: https://cdn.shopify.com/s/files/1/0555/3635/3581/files/20200724_171234-700x331.jpg?v=1746129723
-    imageAlt: Interior shot of Double Vision Brewery
+    image: https://cdn.shopify.com/s/files/1/0555/3635/3581/files/DVB-4_1-700x394.jpg?v=1746129723
+    imageAlt: Double Vision Brewery in Wellington
   - name: Kazu Izakaya
     category: Food & drink
     area: Te Aro
@@ -97,8 +97,8 @@ favourites:
     category: Things to do
     area: Karori
     description: A predator-fenced ecosanctuary with native birds and bush walks. The guided night tours are especially worth considering.
-    image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Native forest path through lush greenery
+    image: https://cdn.sanity.io/images/n1o990un/production/cf72d62abf060df3cb6e56abba6758bdfa7a3e9c-1200x900.jpg?auto=format&fit=max&w=1080
+    imageAlt: Native bush at Zealandia Te Māra a Tāne
   - name: Mount Victoria Lookout
     category: Things to do
     area: Mount Victoria
@@ -109,8 +109,8 @@ favourites:
     category: Things to do
     area: Te Aro
     description: Go for coffee, food, vintage shopping, bars and people-watching, then let the afternoon happen.
-    image: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Bustling urban street with cafés and shops
+    image: https://image-tc.galaxy.tf/wiwebp-54ziu1t4r53a28umdtt6umtpf/file.webp
+    imageAlt: Cuba Street in Wellington
   - name: Martinborough
     category: Further afield
     area: Wairarapa

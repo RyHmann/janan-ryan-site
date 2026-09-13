@@ -2,40 +2,11 @@
 import Layout from "../layouts/Layout.astro";
 import DiscountCode from "../components/DiscountCode.astro";
 
-const stays = [
-  {
-    name: "The Intrepid",
-    type: "Boutique",
-    area: "Te Aro",
-    description:
-      "A beautifully restored heritage building offering an intimate, design-forward stay right in the heart of the Cuba Street precinct.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBPcSevRVaie2U48BY47BupnxMkmwfYEmhBRj_do2TKqc8qP4BFmygmLCLFroujtiJYCYyklVHH8Odjzz2hQku9a9jxbMFgH8udvSAgcFEaVA2wS9-SETaDX4dzPGLhlrgoJGPLwQaX4yewidWFf9xNJMrE-yNBTUI6s9nLYVIz8Kj3c8YmHcJ6oG7BKqEbtzNsfLtU8SHYFdShEWphfFLAVJdzH4h_TUYxAopcLNuZ5ChtmxJ32_y30A",
-  },
-  {
-    name: "Naumi Studio",
-    type: "Eclectic",
-    area: "Te Aro",
-    description:
-      "Maximalist design meets heritage architecture. A sensory experience with rich colours and intricate details.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCvUmed1qeU8QL8UsQiK3LCmPvkBiYOtG7c5pHVnP7YX2UUuJZALq4LtNHSfiePq7wqGsI3kWDm72me3IKmFaZ4vK5Mf_uIlXqui9u9umUrZzyboNYglGFkhv7CLTvPOUo05CglgRRWLgao_uSdPvVRqZ7y1MsrosR1-kT5swLVy2KPb6xc4RHVqwPIZPEaBqxtntn4MS584ye4FT-kl6laLoQSjeOJ6gBzmgohD7KbY5IigO5856pwTA",
-  },
-  {
-    name: "Ohtel",
-    type: "Mid-century",
-    area: "Oriental Bay",
-    description:
-      "Overlooking the marina, offering bespoke mid-century furnishings and effortless coastal elegance.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBzo1ylnS1hGC8uCLMYeejdw8sr0gDkTyWHpCO4HuiXNcfIcvbxcLmJNDOHpikpelwfu2gbzthBa2reRoRfPqRn-01HhUBFtF10gm5fT8lZOkWs6FUth1TOKXrt7_x3I78-pi4kPFBIiUDP6cYGB-Mc-YDZCtAkLQ-aF1l_uXf1vatKSYlTZCsHx3TirDP84-g4CvmoGT1qDIwAQC3mkKLZ9ioSYPGSLKAnvXUd52XK55O5PNpENYDJCw",
-  },
-];
 ---
 
 <Layout
   title="Travel | Janan & Ryan"
-  description="Everything you need to plan your trip to Wellington, from visas to places to stay."
+  description="Everything you need to plan your trip to Wellington, from visas to wedding guest offers."
 >
   <div class="guide">
     <header class="hero">
@@ -104,33 +75,7 @@ const stays = [
       </div>
     </section>
 
-    <section class="stays" aria-labelledby="stays-heading">
-      <div class="section-heading">
-        <h2 id="stays-heading">Places to Stay</h2><span aria-hidden="true"
-        ></span>
-      </div>
-      <div class="stay-grid">
-        {
-          stays.map((stay) => (
-            <article class="stay-card">
-              <>
-                <div class="stay-image">
-                  <img
-                    src={stay.image}
-                    alt={`${stay.name} hotel`}
-                    loading="lazy"
-                  />
-                </div>
-                <h3>{stay.name}</h3>
-                <p class="eyebrow">
-                  {stay.type} <i>•</i> {stay.area}
-                </p>
-                <p>{stay.description}</p>
-              </>
-            </article>
-          ))
-        }
-      </div>
+    <section class="stays" aria-labelledby="hotel-offers-heading">
       <div class="hotel-offers" aria-labelledby="hotel-offers-heading">
         <div>
           <p class="eyebrow">Wedding guest offers</p><h3
