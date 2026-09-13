@@ -121,20 +121,20 @@ favourites:
     category: Further afield
     area: Wairarapa
     description: A pretty town of boutiques, cafés, old villas and a gentler pace than the city. Pair it with Martinborough if you have a car.
-    image: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Charming small town street with trees
+    image: https://top10.co.nz/media/a3oh1sfi/greytown-village-credit-jet-productions-_18.jpg?width=1200
+    imageAlt: Greytown village in the Wairarapa
   - name: Kāpiti Coast
     category: Further afield
     area: Kāpiti
     description: Beaches, cafés and a slower coastal day. The Kāpiti Line makes it one of the easier further-afield options without a car.
-    image: "https://images.unsplash.com/photo-1507520460027-1c3f9b5c4c7b?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Wide sandy beach and blue coastal water
+    image: https://cdn.sanity.io/images/n1o990un/production/ef3b9339ed9b223648a35886ffcc1dacd67c1d73-2048x1536.jpg?auto=format&fit=max&w=1080
+    imageAlt: Waikanae Beach on the Kāpiti Coast
   - name: Paekākāriki Escarpment Track
     category: Further afield
     area: Kāpiti Coast
     description: A dramatic coastal walk with big views, swing bridges and plenty of stairs. Both ends are near train stations.
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85"
-    imageAlt: Hiker on a dramatic coastal mountain track
+    image: https://wellingtonnz.bynder.com/transform/b439e7a4-52ff-4571-8ca6-5d411a94df2c/Escarpment-Track-2025-06?quality=80&io=transform:fit,width:800,height:800
+    imageAlt: Paekākāriki Escarpment Track on the Kāpiti Coast
   
 ---
 
