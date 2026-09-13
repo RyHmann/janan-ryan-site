@@ -1,4 +1,4 @@
-import { useEffect, useState, type SyntheticEvent } from 'react';
+import { useEffect, useRef, useState, type SyntheticEvent } from 'react';
 import {
 	DIETARY_REQUIREMENTS,
 	type AttendanceStatus,
@@ -86,6 +86,8 @@ export default function RsvpApp({ accessError }: Props) {
 	const [saving, setSaving] = useState(false);
 	const [saved, setSaved] = useState(false);
 	const [error, setError] = useState<string | null>(null);
+	const successRef = useRef<HTMLDivElement>(null);
+	const hasSubmitted = household?.guests.some((guest) => guest.ceremonyStatus !== null || guest.receptionStatus !== null) ?? false;
 
 	useEffect(() => {
 		const controller = new AbortController();
@@ -182,7 +184,10 @@ export default function RsvpApp({ accessError }: Props) {
 				setHousehold(body.household as HouseholdRsvp);
 			}
 			setSaved(true);
-			window.scrollTo({ top: 0, behavior: 'smooth' });
+			requestAnimationFrame(() => {
+				successRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+				successRef.current?.focus({ preventScroll: true });
+			});
 		} catch (saveError) {
 			setError(saveError instanceof Error ? saveError.message : 'Unable to save your RSVP.');
 		} finally {
@@ -220,7 +225,7 @@ export default function RsvpApp({ accessError }: Props) {
 			</header>
 
 			{saved && (
-				<div className="rsvp-success" role="status">
+				<div className="rsvp-success" role="status" tabIndex={-1} ref={successRef}>
 					<strong>Thank you—your RSVP has been saved.</strong>
 					<span>You can return with your invitation link if anything changes.</span>
 				</div>
@@ -300,7 +305,8 @@ export default function RsvpApp({ accessError }: Props) {
 				{error && <div className="rsvp-error" role="alert">{error}</div>}
 
 				<div className="rsvp-actions">
-					<button type="submit" disabled={saving}>{saving ? 'Saving…' : 'Save RSVP'}</button>
+					{saved && <span className="rsvp-inline-success" role="status">RSVP saved ✓</span>}
+					<button type="submit" disabled={saving}>{saving ? 'Saving…' : hasSubmitted ? 'Update RSVP' : 'Submit RSVP'}</button>
 				</div>
 			</form>
 		</section>
