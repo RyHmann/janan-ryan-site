@@ -103,8 +103,8 @@ favourites:
     category: Things to do
     area: Mount Victoria
     description: One of the easiest big-view stops in the city, with a full panorama over the harbour, city, airport and hills. Wear a jacket.
-    image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85"
-    imageAlt: View across a harbour city and surrounding hills
+    image: https://lh3.googleusercontent.com/gps-cs-s/AHRPTWl67pTw2Y7i5vkG6Tqb2y5zRAeJ6PDBSSTDbnKjae4ru4slDPREK9I8Tm0MBcQYbJZKFVLdMp6A92j1VsezTVeJYybmd-KAsG7viszBNuLwF5NODfuVs8G40LRwzmSD33fIT9GZ=s680-w680-h510
+    imageAlt: Wellington harbour viewed from Mount Victoria Lookout
   - name: Cuba Street & Hannahs Laneway
     category: Things to do
     area: Te Aro
