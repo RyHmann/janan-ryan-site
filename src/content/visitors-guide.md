@@ -59,7 +59,7 @@ favourites:
   - name: Mean Doses
     category: Drinks
     area: Tory Street
-    description: "A first-floor Tory Street taproom with local craft beer, arcade games, pinball, pool and shuffleboard. Good for a relaxed group drink where there’s something to do besides standing around with a pint."
+    description: "A first-floor Tory Street taproom with local craft beer, arcade games, pinball, pool and shuffleboard. Good for a relaxed group drink where there’s something to do besides just standing around with a pint. Janan has (to date) had two birthday parties and one citizenship celebration here."
     image: https://images.squarespace-cdn.com/content/v1/64bf4839e1c44a61f84c1256/2045e848-34f6-4739-8269-03af1cd88ac0/20230630%2BMeanDoses-SoftLaunch%2B9266.jpeg
     imageAlt: Inside the Mean Doses taproom on Tory Street
   - name: Minibar
