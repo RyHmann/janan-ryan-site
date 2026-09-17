@@ -4,13 +4,13 @@ favourites:
     category: Coffee
     area: Wellington
     badge: Award Winning Coffee
-    description: A cozy neighbourhood gem known for its creative atmosphere, exceptional coffee, and freshly baked pastries. The perfect spot to sketch, read, or simply enjoy a quiet morning in the city.
+    description: A specialty coffee spot on Taranaki Street and an absolute favourite. The award-winning Japanese couple who run it are always coming up with exciting, seasonal coffee-based beverages.
     image: https://lh3.googleusercontent.com/gps-cs-s/AHRPTWms_m0z1J6pm9UZsgPx9H10CbosST_rQTzTXJi3kcW5JiRez82ZZ1PJtZ8VNulSvy1EwUO5h8ztVheBVC9aRWuvIOnjAtwvAaWCywUHljMdF4DyTX9RiSekClkD3OU6JaefbmNj6dV21gCp=s680-w680-h510
     imageAlt: Sketchbook Cafe in Wellington
   - name: Double Vision Brewery
     category: Drinks
     area: Miramar & Island Bay
-    description: One of our favourite places to have a great beer, some fries, and hang with friends. 
+    description: Inspired by Colorado breweries, this Miramar bar is a good pick for craft beer lovers.
     image: https://cdn.shopify.com/s/files/1/0555/3635/3581/files/DVB-4_1-700x394.jpg?v=1746129723
     imageAlt: Double Vision Brewery in Wellington
   - name: Kazu Izakaya
@@ -23,37 +23,43 @@ favourites:
   - name: KC Cafe
     category: Food & drink
     area: Courtenay Place
-    description: A Wellington classic for fast, generous Chinese comfort food, a huge menu, late hours and loyal local following. Janan and Ryan’s go-to for a sneaky takeaway.
+    description: "A Wellington classic on Courtenay Place: fast, generous Chinese comfort food with a huge menu, late hours and a loyal local following. This is Janan and Ryan’s go-to for a sneaky takeaway. If you need help choosing, check out the independent KC Review Instagram account, which is documenting the menu one dish at a time."
     image: https://wellingtonnz.bynder.com/transform/7ff21e65-f75a-4fe2-a813-89c46d9446f3/K-C-Cafe-Takeaway-2026-13?io=transform%3Afill%2Cwidth%3A900%2Cheight%3A560&quality=80
     imageAlt: BBQ pork wonton noodle soup at KC Cafe
   - name: Oikos
     category: Food & drink
     area: Miramar
-    description: Fresh, rustic Greek food built around sharing plates, warm service and family-style dining. Try the sesame-crusted feta.
+    description: Fresh, rustic Greek food out in Miramar, built around sharing plates, warm service and family-style dining. Worth the short trip if you want something outside the city centre. Try the sesame-crusted feta.
     image: https://wellingtonnz.bynder.com/transform/23ed464f-aeae-4c3c-af89-f7224dc65f11/Oikos-01?io=transform%3Afill%2Cwidth%3A900%2Cheight%3A560&quality=80
     imageAlt: Colourful salad from Oikos Hellenic Cuisine
+  - name: Mr Go’s
+    category: Food & drink
+    area: Hannahs Laneway
+    description: Colourful pan-Asian share plates, bao, dumplings and cocktails in Hannahs Laneway. This is also where the bride and her bridesmaids have been meeting up for wedding planning sessions, so it has a bit of pre-wedding lore attached.
+    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=900&q=85"
+    imageAlt: Pan-Asian dumplings and share plates
   - name: Neo Cafe
     category: Coffee
     area: Willis Street
-    description: A busy brunch favourite with strong coffee, cabinet food, baking and all-day café classics. Perfect if you’re jetlagged and up early.
+    description: A busy Willis Street brunch favourite with strong coffee, cabinet food, a solid brunch menu, baking and all-day café classics. Perfect if you’re jetlagged and up early; they don’t take bookings, so be ready to queue.
     image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=85"
     imageAlt: Coffee and brunch in a bright café
   - name: Glou Glou
     category: Coffee
     area: Allen Street
-    description: A sleek espresso and wine bar with excellent pastries, opening late Wednesday to Saturday as a relaxed day-to-night option.
+    description: A sleek espresso and wine bar on Allen Street with some of the tastiest pastries. From Wednesday to Saturday, it also opens late as a relaxed wine bar, making it an easy day-to-night option.
     image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=900&q=85"
     imageAlt: Espresso served at a modern café counter
   - name: Three Sisters
     category: Drinks
     area: Wellington
-    description: Our Tuesday pub-quiz home, with great food, beers and wonderful staff. Friendly competition encouraged.
+    description: This is where we do pub quiz every Tuesday. Great food, great beers and wonderful staff. If you’re in town, put a rival team together and let us know—friendly competition encouraged.
     image: https://lh3.googleusercontent.com/gps-cs-s/AHRPTWms0SFxlGltfXtvasb-KVOwH4ArV-rSRwasmuO_oAUkoFs6D_cab0XaXHRtUGTSpfXKBBZWTougC2FK6SHlS3kYE1K0ZdoH1om-Z5YD3y0PFFy1gbIH2UdfBFfP5vwJCHFwN2xp8GHyicHg=s680-w680-h510
     imageAlt: Three Sisters pub in Wellington
   - name: Mean Doses
     category: Drinks
     area: Tory Street
-    description: "A craft-beer taproom with arcade games, pinball, pool and shuffleboard: ideal for a relaxed group drink with something to do."
+    description: "A first-floor Tory Street taproom with local craft beer, arcade games, pinball, pool and shuffleboard. Good for a relaxed group drink where there’s something to do besides standing around with a pint."
     image: https://images.squarespace-cdn.com/content/v1/64bf4839e1c44a61f84c1256/2045e848-34f6-4739-8269-03af1cd88ac0/20230630%2BMeanDoses-SoftLaunch%2B9266.jpeg
     imageAlt: Inside the Mean Doses taproom on Tory Street
   - name: Minibar
@@ -66,13 +72,13 @@ favourites:
     category: MICHELIN-recognised
     area: Wellington
     badge: Michelin Star
-    description: A Wellington institution for seafood, excellent service and a lively-but-polished dinner that never feels stiff.
+    description: A Wellington institution for seafood, excellent service and a lively-but-polished dinner. Recently awarded one Michelin Star, it’s a strong option if you want something special without it feeling stiff.
     image: https://www.ortega.co.nz/uploads/1/0/4/1/104146336/ortega-72_orig.jpg
     imageAlt: Interior of Ortega Fish Shack
   - name: Koji
     category: MICHELIN-recognised
     area: Wellington
-    description: "Where we had our second date. Go for the “Just feed me” nine-course menu: filling, delicious and great value."
+    description: "This is where we had our second date—technically meant to be our first, but we got impatient and met a day early. Go for the “Just feed me” nine-course menu: filling, delicious and usually under NZ$100 per person."
     image: https://kojirestaurant.co.nz/wp-content/uploads/2022/02/koji-gallery-2022-3-1.jpg
     imageAlt: Interior of Koji restaurant
   - name: Graze
