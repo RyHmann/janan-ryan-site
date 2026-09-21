@@ -5,6 +5,7 @@ import { z } from 'astro/zod';
 const weddingDetails = defineCollection({
   loader: glob({ pattern: 'wedding-details.md', base: './src/content' }),
   schema: z.object({
+    date: z.string(),
     ceremony: z.object({
       name: z.string(),
       address: z.string(),

@@ -1,4 +1,5 @@
 ---
+date: Friday, February 19th, 2027
 ceremony:
   name: Old St Paul’s
   address: 34 Mulgrave Street, Pipitea, Wellington 6011
