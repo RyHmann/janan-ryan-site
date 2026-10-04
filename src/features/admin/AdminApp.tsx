@@ -161,27 +161,6 @@ function Dashboard() {
     },
     onError: (e) => setNotice(e.message),
   });
-  const invite = useMutation({
-    mutationFn: (body: unknown) =>
-      request<{ url: string }>("/invitations", {
-        method: "POST",
-        body: JSON.stringify(body),
-      }),
-    onSuccess: (data) => {
-      setInviteUrl(data.url);
-      refresh();
-    },
-    onError: (e) => setNotice(e.message),
-  });
-  const revoke = useMutation({
-    mutationFn: (id: string) =>
-      request(`/invitations?id=${id}`, { method: "DELETE" }),
-    onSuccess: () => {
-      setNotice("Invitation revoked.");
-      refresh();
-    },
-    onError: (e) => setNotice(e.message),
-  });
   const logout = async () => {
     await request("/logout", { method: "POST" });
     location.assign("/admin");
@@ -438,100 +417,6 @@ function Dashboard() {
         </>
       )}
     </section>
-  );
-}
-function Household({
-  household,
-  onInvite,
-  onRevoke,
-  busy,
-}: {
-  household: AdminHousehold;
-  onInvite: (expiresAt: string) => void;
-  onRevoke: (id: string) => void;
-  busy: boolean;
-}) {
-  const [open, setOpen] = useState(false);
-  const active = household.invitations.find(
-    (invite) => !invite.revokedAt && new Date(invite.expiresAt) > new Date(),
-  );
-  return (
-    <article className="admin-household">
-      <div className="admin-household-summary">
-        <div>
-          <h2>{household.displayName}</h2>
-          <p>
-            {household.primaryEmail} · {household.guests.length} guest
-            {household.guests.length === 1 ? "" : "s"}
-          </p>
-        </div>
-        <button className="admin-secondary" onClick={() => setOpen(!open)}>
-          {open ? "Hide" : "View"}
-        </button>
-      </div>
-      {open && (
-        <div className="admin-household-detail">
-          <p>
-            <strong>Invitation:</strong>{" "}
-            {active
-              ? `Active until ${format(active.expiresAt)}`
-              : "None active"}
-          </p>
-          <form
-            className="admin-invite-form"
-            onSubmit={(event) => {
-              event.preventDefault();
-              const expires = new FormData(event.currentTarget).get(
-                "expiresAt",
-              );
-              if (expires) onInvite(new Date(String(expires)).toISOString());
-            }}
-          >
-            <input
-              name="expiresAt"
-              type="datetime-local"
-              required
-              defaultValue={new Date(Date.now() + 90 * 86400000)
-                .toISOString()
-                .slice(0, 16)}
-            />
-            <button disabled={busy}>Generate invitation</button>
-            {active && (
-              <button
-                type="button"
-                className="admin-danger"
-                disabled={busy}
-                onClick={() => onRevoke(active.id)}
-              >
-                Revoke active link
-              </button>
-            )}
-          </form>
-          <ul>
-            {household.guests.map((guest) => (
-              <li key={guest.id}>
-                <strong>{guest.fullName}</strong> · {guest.rsvpFor} · ceremony:{" "}
-                {guest.ceremonyStatus ?? "pending"} · reception:{" "}
-                {guest.receptionStatus ?? "pending"}
-                {guest.dietaryRequirements.length
-                  ? ` · dietary: ${guest.dietaryRequirements.join(", ")}`
-                  : ""}
-              </li>
-            ))}
-          </ul>
-          {household.additionalComments && (
-            <p>
-              <strong>Comments:</strong> {household.additionalComments}
-            </p>
-          )}
-          <p className="admin-meta">
-            Created {format(household.createdAt)} ·{" "}
-            {household.invitations.length} invitation record
-            {household.invitations.length === 1 ? "" : "s"}
-          </p>
-        </div>
-      )}
-    </article>
   );
 }
 const queryClient = new QueryClient();
