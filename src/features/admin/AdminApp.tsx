@@ -107,7 +107,9 @@ function RsvpRow({
 function Dashboard() {
   const client = useQueryClient();
   const [search, setSearch] = useState("");
-  const [status, setStatus] = useState<"all" | "responded" | "pending">("all");
+  const [status, setStatus] = useState<
+    "all" | "attending" | "unable" | "responded" | "pending"
+  >("all");
   const [view, setView] = useState<"rsvps" | "add">("rsvps");
   const [expanded, setExpanded] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
@@ -165,31 +167,49 @@ function Dashboard() {
     await request("/logout", { method: "POST" });
     location.assign("/admin");
   };
-  const guests = useMemo(
+  const allGuests = useMemo(
     () =>
-      (households.data ?? [])
-        .flatMap((household) =>
-          household.guests.map((guest) => ({ household, guest })),
-        )
-        .filter(({ household, guest }) => {
-          const q = search.toLowerCase().trim();
-          const matches =
-            !q ||
-            [
-              guest.fullName,
-              household.displayName,
-              household.primaryEmail,
-            ].some((value) => value.toLowerCase().includes(q));
-          const responded =
-            guest.ceremonyStatus !== null || guest.receptionStatus !== null;
-          return (
-            matches &&
-            (status === "all" ||
-              (status === "responded" ? responded : !responded))
-          );
-        }),
-    [households.data, search, status],
+      (households.data ?? []).flatMap((household) =>
+        household.guests.map((guest) => ({ household, guest })),
+      ),
+    [households.data],
   );
+  const matchesSearch = ({ household, guest }: (typeof allGuests)[number]) => {
+    const q = search.toLowerCase().trim();
+    return (
+      !q ||
+      [guest.fullName, household.displayName, household.primaryEmail].some(
+        (value) => value.toLowerCase().includes(q),
+      )
+    );
+  };
+  const hasResponded = (guest: (typeof allGuests)[number]["guest"]) =>
+    guest.ceremonyStatus !== null || guest.receptionStatus !== null;
+  const isAttending = (guest: (typeof allGuests)[number]["guest"]) =>
+    guest.ceremonyStatus === "attending" || guest.receptionStatus === "attending";
+  const isUnableToAttend = (guest: (typeof allGuests)[number]["guest"]) => {
+    const statuses = [guest.ceremonyStatus, guest.receptionStatus].filter(
+      (value): value is string => value !== null,
+    );
+    return statuses.length > 0 && statuses.every((value) => value === "declined");
+  };
+  const matchesStatus = (guest: (typeof allGuests)[number]["guest"], filter: typeof status) =>
+    filter === "all" ||
+    (filter === "attending" && isAttending(guest)) ||
+    (filter === "unable" && isUnableToAttend(guest)) ||
+    (filter === "responded" && hasResponded(guest)) ||
+    (filter === "pending" && !hasResponded(guest));
+  const filteredGuests = useMemo(
+    () => allGuests.filter(({ guest, household }) => matchesSearch({ guest, household }) && matchesStatus(guest, status)),
+    [allGuests, search, status],
+  );
+  const searchGuests = useMemo(
+    () => allGuests.filter(matchesSearch),
+    [allGuests, search],
+  );
+  const countFor = (filter: typeof status) =>
+    searchGuests.filter(({ guest }) => matchesStatus(guest, filter)).length;
+  const guests = filteredGuests;
   return (
     <section className="admin-shell panel">
       <header className="admin-header">
@@ -351,11 +371,13 @@ function Dashboard() {
                 onChange={(event) =>
                   setStatus(event.target.value as typeof status)
                 }
-                aria-label="Filter response status"
+                aria-label="Filter attendance status"
               >
-                <option value="all">Everyone</option>
-                <option value="responded">Responded</option>
-                <option value="pending">Awaiting response</option>
+                <option value="all">Everyone ({countFor("all")})</option>
+                <option value="attending">Attending ({countFor("attending")})</option>
+                <option value="unable">Unable to attend ({countFor("unable")})</option>
+                <option value="responded">Responded ({countFor("responded")})</option>
+                <option value="pending">Awaiting response ({countFor("pending")})</option>
               </select>
               <a className="admin-secondary" href={`${api}/export.csv`}>
                 Export CSV
