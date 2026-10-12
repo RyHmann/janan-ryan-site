@@ -95,7 +95,7 @@ function RsvpRow({
         </td>
         <td>
           <span
-            className={`status-pill ${label === "Awaiting response" ? "pending" : "responded"}`}
+            className={`status-pill ${label === "Awaiting response" ? "pending" : label === "Not attending" ? "not-attending" : "responded"}`}
           >
             {label}
           </span>
