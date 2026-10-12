@@ -172,6 +172,7 @@ function Dashboard() {
   >("all");
   const [view, setView] = useState<"rsvps" | "add">("rsvps");
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [sort, setSort] = useState<{ key: "guest" | "household" | "response" | "updated"; direction: "asc" | "desc" }>({ key: "guest", direction: "asc" });
   const [notice, setNotice] = useState<string | null>(null);
   const [inviteUrl, setInviteUrl] = useState<string | null>(null);
   const households = useQuery({
@@ -269,7 +270,23 @@ function Dashboard() {
   );
   const countFor = (filter: typeof status) =>
     searchGuests.filter(({ guest }) => matchesStatus(guest, filter)).length;
-  const guests = filteredGuests;
+  const guests = useMemo(() => [...filteredGuests].sort((a, b) => {
+    const valueFor = (item: (typeof allGuests)[number]) => {
+      if (sort.key === "guest") return item.guest.fullName;
+      if (sort.key === "household") return item.household.displayName;
+      if (sort.key === "response") return attendanceLabel(item.guest);
+      return item.guest.updatedAt ? new Date(item.guest.updatedAt).getTime() : 0;
+    };
+    const left = valueFor(a);
+    const right = valueFor(b);
+    const comparison = typeof left === "number" && typeof right === "number"
+      ? left - right
+      : String(left).localeCompare(String(right), undefined, { sensitivity: "base" });
+    return sort.direction === "asc" ? comparison : -comparison;
+  }), [filteredGuests, sort, allGuests]);
+  const toggleSort = (key: typeof sort.key) => setSort((current) => current.key === key ? { key, direction: current.direction === "asc" ? "desc" : "asc" } : { key, direction: "asc" });
+  const sortIndicator = (key: typeof sort.key) => sort.key === key ? (sort.direction === "asc" ? " ↑" : " ↓") : "";
+  const ariaSort = (key: typeof sort.key) => sort.key === key ? (sort.direction === "asc" ? "ascending" : "descending") : "none";
   return (
     <section className="admin-shell panel">
       <header className="admin-header">
@@ -453,10 +470,10 @@ function Dashboard() {
               <table className="admin-table">
                 <thead>
                   <tr>
-                    <th>Guest</th>
-                    <th>Household</th>
-                    <th>Response</th>
-                    <th>Updated</th>
+                    <th><button className="admin-sort-button" onClick={() => toggleSort("guest")} aria-label={`Sort by guest ${ariaSort("guest")}`}>Guest{sortIndicator("guest")}</button></th>
+                    <th><button className="admin-sort-button" onClick={() => toggleSort("household")} aria-label={`Sort by household ${ariaSort("household")}`}>Household{sortIndicator("household")}</button></th>
+                    <th><button className="admin-sort-button" onClick={() => toggleSort("response")} aria-label={`Sort by response ${ariaSort("response")}`}>Response{sortIndicator("response")}</button></th>
+                    <th><button className="admin-sort-button" onClick={() => toggleSort("updated")} aria-label={`Sort by updated date ${ariaSort("updated")}`}>Updated{sortIndicator("updated")}</button></th>
                   </tr>
                 </thead>
                 <tbody>
