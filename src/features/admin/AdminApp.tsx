@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import type { FormEvent } from "react";
 import {
   QueryClient,
   QueryClientProvider,
@@ -41,16 +40,20 @@ function RsvpRow({
 }) {
   const [attendance, setAttendance] = useState(guest.ceremonyStatus ?? guest.receptionStatus ?? "pending");
   const [comments, setComments] = useState(household.additionalComments);
+  const [dietary, setDietary] = useState(guest.dietaryRequirements);
+  const [dietaryOther, setDietaryOther] = useState(guest.dietaryOther);
+  const [manageOpen, setManageOpen] = useState(false);
   const [saving, setSaving] = useState(false);
   const [adding, setAdding] = useState(false);
   const save = async () => {
     setSaving(true);
     try {
-      await request("/rsvps", { method: "PUT", body: JSON.stringify({ guestId: guest.id, attendance, dietaryRequirements: guest.dietaryRequirements, dietaryOther: guest.dietaryOther, additionalComments: comments }) });
+      await request("/rsvps", { method: "PUT", body: JSON.stringify({ guestId: guest.id, attendance, dietaryRequirements: dietary, dietaryOther, additionalComments: comments }) });
+      setManageOpen(false);
       onMemberAdded();
     } finally { setSaving(false); }
   };
-  const addMember = async (event: FormEvent<HTMLFormElement>) => {
+  const addMember = async (event: { preventDefault: () => void; currentTarget: HTMLFormElement }) => {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     setAdding(true);
@@ -117,8 +120,20 @@ function RsvpRow({
                 <strong>Comments</strong>
                 <span>{household.additionalComments || "None"}</span>
               </div>
-              <div className="admin-manage-rsvp">
-                <strong>Manage RSVP</strong>
+              <button className="admin-manage-button" onClick={(event) => { event.stopPropagation(); setManageOpen(!manageOpen); }}>{manageOpen ? "Hide manage form" : "Manage RSVP"}</button>
+            </div>
+          </td>
+        </tr>
+      )}
+      {manageOpen && (
+        <tr className="admin-modal-row">
+          <td colSpan={5}>
+            <div className="admin-modal-backdrop" role="presentation">
+              <section className="admin-modal" aria-labelledby={`manage-${guest.id}`}>
+                <button className="admin-modal-close" aria-label="Close manage RSVP" onClick={() => setManageOpen(false)}>×</button>
+                <p className="admin-eyebrow">Admin response</p>
+                <h2 id={`manage-${guest.id}`}>RSVP for {guest.fullName}</h2>
+                <p className="admin-modal-intro">Enter the same details a guest would submit through the RSVP form.</p>
                 <label>Attendance
                   <select value={attendance} onChange={(event) => setAttendance(event.target.value)}>
                     <option value="pending">No response</option>
@@ -126,18 +141,19 @@ function RsvpRow({
                     <option value="declined">Unable to attend</option>
                   </select>
                 </label>
-                <label>Household comments
-                  <textarea value={comments} maxLength={2000} onChange={(event) => setComments(event.target.value)} />
-                </label>
-                <button onClick={save} disabled={saving}>{saving ? "Saving…" : "Save RSVP"}</button>
-              </div>
-              <div className="admin-manage-rsvp">
-                <strong>Add household member</strong>
-                <form onSubmit={addMember}>
-                  <input name="fullName" required maxLength={200} placeholder="Full name" />
-                  <button disabled={adding}>{adding ? "Adding…" : "Add member"}</button>
-                </form>
-              </div>
+                <fieldset>
+                  <legend>Dietary requirements</legend>
+                  {[["gluten_free", "Gluten free"], ["vegan", "Vegan"], ["vegetarian", "Vegetarian"], ["other", "Other"]].map(([value, label]) => (
+                    <label className="admin-checkbox" key={value}><input type="checkbox" checked={dietary.includes(value)} onChange={(event) => setDietary(event.target.checked ? [...dietary, value] : dietary.filter((item) => item !== value))} /> {label}</label>
+                  ))}
+                </fieldset>
+                {dietary.includes("other") && <label>Dietary details<input value={dietaryOther} maxLength={500} onChange={(event) => setDietaryOther(event.target.value)} /></label>}
+                <label>Additional household comments<textarea value={comments} maxLength={2000} onChange={(event) => setComments(event.target.value)} /></label>
+                <div className="admin-modal-actions"><button onClick={save} disabled={saving}>{saving ? "Saving…" : "Save RSVP"}</button><button className="admin-secondary" onClick={() => setManageOpen(false)}>Cancel</button></div>
+                <hr />
+                <h3>Add household member</h3>
+                <form className="admin-add-member" onSubmit={addMember}><input name="fullName" required maxLength={200} placeholder="Full name" /><button disabled={adding}>{adding ? "Adding…" : "Add member"}</button></form>
+              </section>
             </div>
           </td>
         </tr>
