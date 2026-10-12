@@ -25,6 +25,16 @@ const format = (date: string | null) =>
         new Date(date),
       )
     : "—";
+const attendanceLabel = (guest: AdminHousehold["guests"][number]) => {
+  const statuses = guest.rsvpFor === "ceremony"
+    ? [guest.ceremonyStatus]
+    : guest.rsvpFor === "reception"
+      ? [guest.receptionStatus]
+      : [guest.ceremonyStatus, guest.receptionStatus];
+  if (statuses.includes("attending")) return "Attending";
+  if (statuses.length > 0 && statuses.every((status) => status === "declined")) return "Not attending";
+  return "Awaiting response";
+};
 function RsvpRow({
   household,
   guest,
@@ -60,8 +70,7 @@ function RsvpRow({
     try { await request(`/households/${household.id}/members`, { method: "POST", body: JSON.stringify({ fullName: form.get("fullName") }) }); event.currentTarget.reset(); onMemberAdded(); }
     finally { setAdding(false); }
   };
-  const responded =
-    guest.ceremonyStatus !== null || guest.receptionStatus !== null;
+  const label = attendanceLabel(guest);
   return (
     <>
       <tr
@@ -85,28 +94,21 @@ function RsvpRow({
           <small>{household.primaryEmail}</small>
         </td>
         <td>
-          {guest.rsvpFor === "both" ? "Ceremony & reception" : guest.rsvpFor}
-        </td>
-        <td>
           <span
-            className={`status-pill ${responded ? "responded" : "pending"}`}
+            className={`status-pill ${label === "Awaiting response" ? "pending" : "responded"}`}
           >
-            {responded ? "Responded" : "Awaiting response"}
+            {label}
           </span>
         </td>
         <td>{format(guest.updatedAt)}</td>
       </tr>
       {open && (
         <tr className="admin-rsvp-detail">
-          <td colSpan={5}>
+          <td colSpan={4}>
             <div className="response-detail">
               <div>
-                <strong>Ceremony</strong>
-                <span>{guest.ceremonyStatus ?? "No response"}</span>
-              </div>
-              <div>
-                <strong>Reception</strong>
-                <span>{guest.receptionStatus ?? "No response"}</span>
+                <strong>Attendance</strong>
+                <span>{label}</span>
               </div>
               <div>
                 <strong>Dietaries</strong>
@@ -453,7 +455,6 @@ function Dashboard() {
                   <tr>
                     <th>Guest</th>
                     <th>Household</th>
-                    <th>Events</th>
                     <th>Response</th>
                     <th>Updated</th>
                   </tr>
