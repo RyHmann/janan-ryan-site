@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import type { FormEvent } from "react";
 import {
   QueryClient,
   QueryClientProvider,
@@ -30,12 +31,32 @@ function RsvpRow({
   guest,
   open,
   onToggle,
+  onMemberAdded,
 }: {
   household: AdminHousehold;
   guest: AdminHousehold["guests"][number];
   open: boolean;
   onToggle: () => void;
+  onMemberAdded: () => void;
 }) {
+  const [attendance, setAttendance] = useState(guest.ceremonyStatus ?? guest.receptionStatus ?? "pending");
+  const [comments, setComments] = useState(household.additionalComments);
+  const [saving, setSaving] = useState(false);
+  const [adding, setAdding] = useState(false);
+  const save = async () => {
+    setSaving(true);
+    try {
+      await request("/rsvps", { method: "PUT", body: JSON.stringify({ guestId: guest.id, attendance, dietaryRequirements: guest.dietaryRequirements, dietaryOther: guest.dietaryOther, additionalComments: comments }) });
+      onMemberAdded();
+    } finally { setSaving(false); }
+  };
+  const addMember = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    setAdding(true);
+    try { await request(`/households/${household.id}/members`, { method: "POST", body: JSON.stringify({ fullName: form.get("fullName") }) }); event.currentTarget.reset(); onMemberAdded(); }
+    finally { setAdding(false); }
+  };
   const responded =
     guest.ceremonyStatus !== null || guest.receptionStatus !== null;
   return (
@@ -95,6 +116,27 @@ function RsvpRow({
               <div>
                 <strong>Comments</strong>
                 <span>{household.additionalComments || "None"}</span>
+              </div>
+              <div className="admin-manage-rsvp">
+                <strong>Manage RSVP</strong>
+                <label>Attendance
+                  <select value={attendance} onChange={(event) => setAttendance(event.target.value)}>
+                    <option value="pending">No response</option>
+                    <option value="attending">Attending</option>
+                    <option value="declined">Unable to attend</option>
+                  </select>
+                </label>
+                <label>Household comments
+                  <textarea value={comments} maxLength={2000} onChange={(event) => setComments(event.target.value)} />
+                </label>
+                <button onClick={save} disabled={saving}>{saving ? "Saving…" : "Save RSVP"}</button>
+              </div>
+              <div className="admin-manage-rsvp">
+                <strong>Add household member</strong>
+                <form onSubmit={addMember}>
+                  <input name="fullName" required maxLength={200} placeholder="Full name" />
+                  <button disabled={adding}>{adding ? "Adding…" : "Add member"}</button>
+                </form>
               </div>
             </div>
           </td>
@@ -402,7 +444,7 @@ function Dashboard() {
                 </thead>
                 <tbody>
 									{guests.map(({ household, guest }) => (
-										<RsvpRow key={guest.id} household={household} guest={guest} open={expanded === guest.id} onToggle={() => setExpanded(expanded === guest.id ? null : guest.id)} />
+										<RsvpRow key={guest.id} household={household} guest={guest} open={expanded === guest.id} onToggle={() => setExpanded(expanded === guest.id ? null : guest.id)} onMemberAdded={refresh} />
 									))}
 									{/* rows are rendered by RsvpRow */}
 									{/*

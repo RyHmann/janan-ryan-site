@@ -31,6 +31,26 @@ export async function createHousehold(input: { displayName: string; primaryEmail
 	const { data, error } = await getSupabaseAdmin().rpc('create_admin_household', { p_display_name: input.displayName, p_primary_email: input.primaryEmail, p_guests: input.guests });
 	if (error) throw error; return data as string;
 }
+export async function addHouseholdMember(householdId: string, fullName: string) {
+	const db = getSupabaseAdmin();
+	const { data: existing, error: existingError } = await db.from('guests').select('display_order').eq('household_id', householdId).order('display_order', { ascending: false }).limit(1).maybeSingle();
+	if (existingError) throw existingError;
+	const { data, error } = await db.from('guests').insert({ household_id: householdId, full_name: fullName, rsvp_for: 'both', display_order: (existing?.display_order ?? 0) + 1 }).select('id').single();
+	if (error) throw error;
+	return data.id as string;
+}
+export async function updateAdminRsvp(input: { guestId: string; attendance: 'pending' | 'attending' | 'declined'; dietaryRequirements: string[]; dietaryOther: string; additionalComments: string }) {
+	const db = getSupabaseAdmin();
+	const { data: guest, error: guestError } = await db.from('guests').select('id, household_id, rsvp_for').eq('id', input.guestId).maybeSingle();
+	if (guestError) throw guestError;
+	if (!guest) throw new Error('Guest not found');
+	const ceremony = guest.rsvp_for === 'reception' ? null : input.attendance;
+	const reception = guest.rsvp_for === 'ceremony' ? null : input.attendance;
+	const { error } = await db.from('rsvps').upsert({ guest_id: input.guestId, ceremony_status: ceremony, reception_status: reception, dietary_requirements: input.dietaryRequirements, dietary_other: input.dietaryOther || null }, { onConflict: 'guest_id' });
+	if (error) throw error;
+	const { error: commentError } = await db.from('households').update({ additional_comments: input.additionalComments || null }).eq('id', guest.household_id);
+	if (commentError) throw commentError;
+}
 export async function createInvitation(householdId: string, expiresAt: string) {
 	const rawToken = Array.from(crypto.getRandomValues(new Uint8Array(32)), (byte) => byte.toString(16).padStart(2, '0')).join('');
 	const { error } = await getSupabaseAdmin().from('invitation_tokens').insert({ household_id: householdId, token_hash: await sha256Hex(rawToken), expires_at: expiresAt });
