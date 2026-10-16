@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   QueryClient,
   QueryClientProvider,
@@ -46,7 +46,7 @@ function RsvpRow({
   guest: AdminHousehold["guests"][number];
   open: boolean;
   onToggle: () => void;
-  onMemberAdded: () => void;
+  onMemberAdded: () => Promise<unknown>;
 }) {
   const [attendance, setAttendance] = useState(guest.ceremonyStatus ?? guest.receptionStatus ?? "pending");
   const [comments, setComments] = useState(household.additionalComments);
@@ -55,13 +55,28 @@ function RsvpRow({
   const [manageOpen, setManageOpen] = useState(false);
   const [saving, setSaving] = useState(false);
   const [adding, setAdding] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  useEffect(() => {
+    setAttendance(guest.ceremonyStatus ?? guest.receptionStatus ?? "pending");
+    setDietary(guest.dietaryRequirements);
+    setDietaryOther(guest.dietaryOther);
+    setComments(household.additionalComments);
+  }, [guest.ceremonyStatus, guest.receptionStatus, guest.dietaryRequirements, guest.dietaryOther, household.additionalComments]);
   const save = async () => {
     setSaving(true);
+    setError(null);
     try {
+      if (dietary.includes("other") && !dietaryOther.trim()) {
+        throw new Error("Please describe the other dietary requirement.");
+      }
       await request("/rsvps", { method: "PUT", body: JSON.stringify({ guestId: guest.id, attendance, dietaryRequirements: dietary, dietaryOther, additionalComments: comments }) });
       setManageOpen(false);
-      onMemberAdded();
-    } finally { setSaving(false); }
+      await onMemberAdded();
+    } catch (value) {
+      setError(value instanceof Error ? value.message : "Unable to save this RSVP.");
+    } finally {
+      setSaving(false);
+    }
   };
   const addMember = async (event: { preventDefault: () => void; currentTarget: HTMLFormElement }) => {
     event.preventDefault();
@@ -152,6 +167,7 @@ function RsvpRow({
                 {dietary.includes("other") && <label>Dietary details<input value={dietaryOther} maxLength={500} onChange={(event) => setDietaryOther(event.target.value)} /></label>}
                 <label>Additional household comments<textarea value={comments} maxLength={2000} onChange={(event) => setComments(event.target.value)} /></label>
                 <div className="admin-modal-actions"><button onClick={save} disabled={saving}>{saving ? "Saving…" : "Save RSVP"}</button><button className="admin-secondary" onClick={() => setManageOpen(false)}>Cancel</button></div>
+                {error && <p className="admin-error" role="alert">{error}</p>}
                 <hr />
                 <h3>Add household member</h3>
                 <form className="admin-add-member" onSubmit={addMember}><input name="fullName" required maxLength={200} placeholder="Full name" /><button disabled={adding}>{adding ? "Adding…" : "Add member"}</button></form>
