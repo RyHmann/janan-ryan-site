@@ -56,6 +56,8 @@ function RsvpRow({
   const [saving, setSaving] = useState(false);
   const [adding, setAdding] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [removing, setRemoving] = useState(false);
+  const [removeError, setRemoveError] = useState<string | null>(null);
   useEffect(() => {
     setAttendance(guest.ceremonyStatus ?? guest.receptionStatus ?? "pending");
     setDietary(guest.dietaryRequirements);
@@ -84,6 +86,18 @@ function RsvpRow({
     setAdding(true);
     try { await request(`/households/${household.id}/members`, { method: "POST", body: JSON.stringify({ fullName: form.get("fullName") }) }); event.currentTarget.reset(); onMemberAdded(); }
     finally { setAdding(false); }
+  };
+  const removeMember = async () => {
+    if (!window.confirm(`Remove ${guest.fullName} from ${household.displayName}? Their RSVP and dietary details will also be deleted.`)) return;
+    setRemoving(true);
+    setRemoveError(null);
+    try {
+      await request(`/households/${household.id}/members`, { method: "DELETE", body: JSON.stringify({ guestId: guest.id }) });
+      setManageOpen(false);
+      onMemberAdded();
+    } catch (error) {
+      setRemoveError(error instanceof Error ? error.message : "Unable to remove this guest.");
+    } finally { setRemoving(false); }
   };
   const label = attendanceLabel(guest);
   return (
@@ -171,6 +185,7 @@ function RsvpRow({
                 <hr />
                 <h3>Add household member</h3>
                 <form className="admin-add-member" onSubmit={addMember}><input name="fullName" required maxLength={200} placeholder="Full name" /><button disabled={adding}>{adding ? "Adding…" : "Add member"}</button></form>
+                {household.guests.length > 1 && <div className="admin-remove-member"><button className="admin-danger" onClick={removeMember} disabled={removing}>{removing ? "Removing…" : `Remove ${guest.fullName}`}</button>{removeError && <p className="admin-error" role="alert">{removeError}</p>}</div>}
               </section>
             </div>
           </td>

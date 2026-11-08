@@ -39,6 +39,17 @@ export async function addHouseholdMember(householdId: string, fullName: string) 
 	if (error) throw error;
 	return data.id as string;
 }
+export async function removeHouseholdMember(householdId: string, guestId: string) {
+	const db = getSupabaseAdmin();
+	const { data: guest, error: guestError } = await db.from('guests').select('id').eq('id', guestId).eq('household_id', householdId).maybeSingle();
+	if (guestError) throw guestError;
+	if (!guest) throw new Error('Guest not found');
+	const { count, error: countError } = await db.from('guests').select('id', { count: 'exact', head: true }).eq('household_id', householdId);
+	if (countError) throw countError;
+	if ((count ?? 0) <= 1) throw new Error('A household must have at least one guest.');
+	const { error } = await db.from('guests').delete().eq('id', guestId).eq('household_id', householdId);
+	if (error) throw error;
+}
 export async function updateAdminRsvp(input: { guestId: string; attendance: 'pending' | 'attending' | 'declined'; dietaryRequirements: string[]; dietaryOther: string; additionalComments: string }) {
 	const db = getSupabaseAdmin();
 	const { data: guest, error: guestError } = await db.from('guests').select('id, household_id, rsvp_for').eq('id', input.guestId).maybeSingle();
